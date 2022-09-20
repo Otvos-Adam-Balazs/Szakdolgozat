@@ -1,0 +1,1 @@
+A NodeJs-t Javara szeretném cserélni a mongoDB-t pedig postgreSQL-re
