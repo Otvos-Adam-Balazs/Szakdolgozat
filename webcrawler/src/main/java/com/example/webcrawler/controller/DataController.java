@@ -27,8 +27,9 @@ public class DataController {
 
     @GetMapping("/postData")
     @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
-    public void setData(@RequestParam(name="make") String makes){
-        dataService.setData(makes);
+    public void setData(@RequestParam(name="make")String makes,
+                        @RequestParam(name="name")String name){
+        dataService.setData(makes,name);
     }
 
 }

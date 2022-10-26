@@ -24,4 +24,8 @@ public class Data {
 
     @Column(name = "searchDate")
     private Date date;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

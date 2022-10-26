@@ -17,7 +17,7 @@ rös öröklődést (interfészek esetében lehetséges).
 Java jelenlegi tulajdonosa az Oracle Corporation 2010-óta hogy felvásárolta a Sun Microsystems-t.
 
 Java az egyik legelterjedtebb programozási nyelv, mivel mindegyik operációs rend-
-szerre tudunk vele alkalmazást fejleszteni, és könnyen tanulható. Nagyon felhasználó barát.
+szerre tudunk vele alkalmazást fejleszteni, és könnyen tanulható. Nagyon felhasználó barát.\cite{Java}
 
 \subsection{Spring Boot}
 
@@ -38,7 +38,7 @@ A POM.XML egy konfigurációs fájl ként is használható
 
 Spring initializr: Segítségével könnyedén „összekattintgathatjuk” a projektünk alap-
 ját, megadhatunk függőségeket, megadhatjuk, hogy milyen programozási nyelven sze-
-retnénk elkészíteni, a projekt nevét.
+retnénk elkészíteni, a projekt nevét. \cite{SpringBoot}
 
 \Section{Adatbázis}
 Az adatbázis nem más, mint elektronikusan tárolt adatok, amihez hozzá lehet férni.
@@ -48,12 +48,12 @@ Az adatbázis nem más, mint elektronikusan tárolt adatok, amihez hozzá lehet 
 
 Nyílt forráskódú relációs adatbázis kezelő rendszer ami az egyik legrégebbi relációs adatbázis nem mellesleg ingyenes. Relációs adatbázisok relációs modellen alapulnak. A relációs modell az adatokat egy vagy több sorból és oszlopból álló táblázatba(relációba) rendezi és minden sorhoz rendel egy egyedi kulcsot.
 
-A PostgreSQL Kaliforniai egyetem Ingres projektjéből fejlődött. Az összes operációs rendszerrel kompatibilis. Támogatja a relációs és a nem relációs lekérdezéseket is így JSON vagy SQL alapú útvonal-kifejezésekkel is elérhetőek az adatok.  Mind ezek miatt az egyik leghasználtabb Adatbázis-motor.
+A PostgreSQL Kaliforniai egyetem Ingres projektjéből fejlődött. Az összes operációs rendszerrel kompatibilis. Támogatja a relációs és a nem relációs lekérdezéseket is így JSON vagy SQL alapú útvonal-kifejezésekkel is elérhetőek az adatok.  Mind ezek miatt az egyik leghasználtabb Adatbázis-motor.\cite{PostgreSQL}
 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{images/top14_database.png}
-\caption{14 leghasználtabb adatbázis.}
+\caption{14 leghasználtabb adatbázis.\cite{databases}}
 \label{fig:Adatbázisok}
 \end{figure}
 \newpage
@@ -78,7 +78,7 @@ Egyben tartalmazza TypeScript osztályt HTML-sablont stílusokkal. HTML sablon l
 seket ezek NgModulokba vannak rendezve. Minden alkalmazásnak van egy úgynevezett gyökérmodulja aminek a neve általában az AppModule, amely a bootstrap mechaniz-
 must biztosítja, amely elindítja az alkalmazást. Ngmodulok is importálhatnak más Ngmodulokat, például az útválasztó szolgáltatás használatához a Router NgModul-t.  Minden Angular alkalmazásnak van egy gyökérkomponense, ami összekapcsolja a komponens hierarchiát. Mindegyik komponenshez tartozik egy HTML-sablon, ami se-
 gítségével megjeleníthető a tartalom. Tartalmaz egy services osztályt is ezt akkor használjuk ha van olyan adat vagy logika, amelyek nem kapcsolódnak, de meg szeret-
-nénk osztani a komponensek között.
+nénk osztani a komponensek között.\cite{Angular}
 
 \Section{Fejlesztői környezetek és fejlesztéshez használt p-rogramok}
 
@@ -86,7 +86,7 @@ nénk osztani a komponensek között.
 
 Egy integrált fejlesztői környezet amit a JetBrains fejlesztett ki. Ebben az IDEA-ban Java, Kotlin Groovy és más JVM alapú nyelveken írt szoftvereket lehet fejleszteni. Az integrált fejlesztői környezet(IDE)  egy olyan  szoftveralkamazás, amely átfogó lehetősé-
 geket biztosít a számítógép programozóknak a szofverfejlesztéshez . Az IDE általában legalább egy forráskód-szerkesztőből ,építési autómatizálási eszközökből és egy hiba-
-keresőből áll . Egyes IDE-k, például a NetBeans és az Eclipse tartalmazzák a szükséges fordított , értelmezőt vagy mindkettőt; mások, például a SharpDevelop és a Lazuras nem.[Link].
+keresőből áll . Egyes IDE-k, például a NetBeans és az Eclipse tartalmazzák a szükséges fordított , értelmezőt vagy mindkettőt; mások, például a SharpDevelop és a Lazuras nem.\cite{Intelij}\cite{Intelij2}
 \newpage
 
 \begin{figure}[h]
@@ -111,7 +111,7 @@ vel lehet használni mint például:
 \end{itemize}
 
 Rengeteg kiegészítővel lehet bővíteni a fejlesztő környezetet ami könnyebbé és átlát-
-hatóbbá teszi  fejlesztést, ezért esett nekem a választás erre a környezetre a frontend fejlesztéséhez.
+hatóbbá teszi  fejlesztést, ezért esett nekem a választás erre a környezetre a frontend fejlesztéséhez.\cite{VSCode}
 
 \begin{figure}[h]
 \centering
@@ -123,7 +123,7 @@ hatóbbá teszi  fejlesztést, ezért esett nekem a választás erre a környeze
 
 \subsection{Postman}
 
-A Postman API-k létrehozására és használatára, tesztelésére létrehozott plattform. Használatával egyszerűbben és gyorsabban hozhatunk létre jobb minőségű API-kat. Rengetek eszközkészletet tartalmaz amely tovább gyorsítja az API létrehozását a  terve-
+A Postman\cite{Postman} API-k létrehozására és használatára, tesztelésére létrehozott plattform. Használatával egyszerűbben és gyorsabban hozhatunk létre jobb minőségű API-kat. Rengetek eszközkészletet tartalmaz amely tovább gyorsítja az API létrehozását a  terve-
 zéstől egyenesen a tesztelésig. Ilyen eszközök:
 
 \begin{itemize}
@@ -149,7 +149,7 @@ rok a Postman felhőjében vannak tárolva és ennek köszönhetően gyorsan be�
 
 \subsection{PgAdmin}
 
-A PgAdmin egy grafikus felhasználói felület a PostgreSQL kezelésére, ami a lehető legjobb megoldás lehet. Legújabb verziója a PgAdmin 4, jQuerry, JavaScript és Python kombinációjával készült. Előnyei:
+A PgAdmin\cite{PgAdmin} egy grafikus felhasználói felület a PostgreSQL kezelésére, ami a lehető legjobb megoldás lehet. Legújabb verziója a PgAdmin 4, jQuerry, JavaScript és Python kombinációjával készült. Előnyei:
 
 \begin{itemize}
 \item Kompatibilis Windows, linux és Mac operációs rendszerekkel is.

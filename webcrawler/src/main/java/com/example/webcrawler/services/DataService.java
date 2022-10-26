@@ -2,8 +2,11 @@ package com.example.webcrawler.services;
 
 import com.example.webcrawler.dto.StatisticDto;
 import com.example.webcrawler.entities.Data;
+import com.example.webcrawler.entities.User;
 import com.example.webcrawler.repositories.DataRepository;
+import com.example.webcrawler.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
@@ -11,16 +14,26 @@ import java.time.LocalDate;
 import java.sql.Date;
 
 @Service
-public class DataService {
+public class DataService  {
     @Autowired
     DataRepository dataRepository;
 
-    public void setData(String makes) {
-        System.out.println(makes);
+    @Autowired
+    UserRepository userRepository;
+
+
+    public void setData(String makes , String name) {
+        User user = new User();
+        if(!ObjectUtils.isEmpty((name))){
+             user= userRepository.findUserByLogin(name);
+        }
+
+
         if(!ObjectUtils.isEmpty(makes)){
             Data data = new Data();
             data.setMakes(makes);
             data.setDate(Date.valueOf(LocalDate.now()));
+            data.setUser(user);
             dataRepository.save(data);
         }else{
         }

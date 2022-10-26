@@ -3,7 +3,9 @@ package com.example.webcrawler.services;
 import com.example.webcrawler.dto.MakesDto;
 import com.example.webcrawler.dto.ModelDto;
 import com.example.webcrawler.entities.Car;
+import com.example.webcrawler.entities.User;
 import com.example.webcrawler.repositories.CarRepository;
+import com.example.webcrawler.repositories.UserRepository;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -33,9 +35,13 @@ public class CarService {
     @Autowired
     private CarRepository carRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     public void saveCar() throws InterruptedException, IOException {
         String hasznaltauto="https://www.hasznaltauto.hu/talalatilista/PCOG2VG3R3RDADH5S56EDOONZSDMOXNBIFNKDEKWTLL4UUCTIKJRQJLJGWAPR53V3IBE3RKTVVRTWOJ6HYU4Q6JGV5PE5JSSKQILAJFHMCBY2WBSG2I4EX6QUA7EGHNIQXTFFACOBM3YY72IWGSUMBIMUEBWE34DAE23RXBIDN5TGKOEHABT7Q6MIIFKYXM66RWV4JLC3OTKO4YAP6Y2AQ36ART6V5Q4FETO3525RIJBZWE5AKW7ZC4CNEOBANGZC443444LB32QCA55JD7ZFAXZSFXWPTXP24GGQKKXGBO56QGBATCXEK5TERBSWOAGHDPDWWECHXH4NNPLQKPBF5WYICFCC6EXQHTXJ2DLDV6KINTDRJM5NEX4DDZ7R3O572USSS7XJEDP7ILL2QHH3IXJ27Q6ZSD6VMBHWOSTXZ4VP62A42X7FYOLSGQ2BSFORMXP3VTWPWXTPPKK3FOSLZKXV3VVDNS4FEO5APJ4MPAFLEFL72ECQKIVVD2QHYMSUBHLKP5CDY4QQG26BGCFJGAHHAIKMUWRS25C7YUF57M4UIKUMZWMWJEV7CJHTVP4BTAJ5IL4TQFVVQ4J3DWSAF7SVK5O3NXGKBZNFROTDBH3W6AW4NMRPT3DHTX6FBKY3Y4OBHI52CLOQ2QXY3CNEXH2ML4AJNQRKU45XWGAOPEFVI6HATSSCWCFRXTEEVJEZVK5OVXA7C2A2BAY52GYXSP3JPC75L4G7BNVYJ7N2VH3EZCGKFRRLIRFPQHFWDKJKO6EHV3MLKVUM4CAOOFHOJ5HWVXTEOXSKKIT2N6DDQVYD7RUELNJBJIDHEVIP6D366H6CRZZITM7FFKWEYMTL7RE7A3LIZ7U7GPFYCO2BR4N4OUR3HNH62CXDO2AHMVX74V5VJPU";
         String joAutok="https://joautok.hu/hasznaltauto";
+
 
         carRepository.deleteAll();
         saveHasznaltauto(hasznaltauto);
@@ -151,7 +157,7 @@ public class CarService {
             }
 
             i++;
-            sleep(700);
+            sleep(7000);
         } while (i < 10);
     }
 

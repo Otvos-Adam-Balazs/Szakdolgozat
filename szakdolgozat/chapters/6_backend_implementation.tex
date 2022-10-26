@@ -7,7 +7,7 @@ A projetket a Spring Boot Initializr segítségével hoztam létre.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.37]{images/Spring_init.png}
-\caption{Spring Boot Initializr}
+\caption{Spring Boot Initializr\cite{SpringInit}}
 \label{fig:Spring_Boot_Initializr}
 \end{figure}
 
@@ -132,7 +132,7 @@ Ahogy az Ábrán is látható úgy oldottam meg azoknak a paramétereknek a vizs
 gálatát, ott ahol -tól -ig értékek vannak, hogy amikor a minimum érték nagyobb mint az maximum akkor nem kerül bele a lekérdezésbe és így nem fogunk hibát kapni sosem a keresésnél.
 
 \Section{Bejelentkezés és Regisztrációs}
-A regisztráció és bejelentkezés elkészítéséhez a Spring Security keretrendszert használtam, mert nagyban megkönnyíti.
+A regisztráció és bejelentkezés elkészítéséhez a Spring Security keretrendszert\cite{SpringSecurity} használtam, mert nagyban megkönnyíti a fejlesztési folyamatot, mivel biztosít előre elkészített modulokat.
 
 \subsection{Regisztráció}
 Ahoz, hogy az oldalt használni lehessen ahogy már említettem a regisztráció a leg-
@@ -236,7 +236,7 @@ Az alábbi kódrész egy példa arra, hogy hogyan is használható az annotáci�
 \newpage
 
 \subsection{JSON Web Token}
-Mikor bejelentkezünk akkor a szerver generál egy JWT tokent (JSON Web Token). Ez egy javasolt internetes szabvány az opcionálisan aláírt és/vagy opcionálisan titkosí-
+Mikor bejelentkezünk akkor a szerver generál egy JWT tokent (JSON Web Token)\cite{JWT}. Ez egy javasolt internetes szabvány az opcionálisan aláírt és/vagy opcionálisan titkosí-
 tott adatok létrehozására, amelyek hasznos adattartalma bizonyos számú követelést deklaráló JSON-t tartalmaz. A tokeneket titkos kulccsal vagy nyilvános/titkos kulccsal írják alá.
 
 A token tartalmazni fogja a felhasználónevét. A token Minden ki és bejelentkezés során újragenerálódik. 
@@ -244,6 +244,6 @@ A token tartalmazni fogja a felhasználónevét. A token Minden ki és bejelentk
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{images/jwt.io.png}
-\caption{Kódolt és Dekódolt JWT}
+\caption{Kódolt és Dekódolt JWT\cite{JWTexample}}
 \label{fig:JWT}
 \end{figure}
