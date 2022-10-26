@@ -111,10 +111,15 @@ Search data tábla:
  
  \begin{figure}[h]
 \centering
-\includegraphics[scale=0.8]{images/DataTable.png}
+\includegraphics[scale=0.6]{images/Data_Table.png}
 \caption{Adatbázis táblák}
 \label{fig:DataTable}
 \end{figure}
+
+A users és search data tábla között egy-több kapcsolat lesz mivel egy user-hez több keresési előzmény is tartozhat,de egy kereséshez csak egy felhasználó.
+
+A cars tábla független lesz a többitől mivel ide az adatok más oldalról lesznek letöltve és így nem tartozik a user-hez.
+
  
 \Section{API-k megtervezése}
 A programban használt Api-król lesz szó ebben a fejezetben
