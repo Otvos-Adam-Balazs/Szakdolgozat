@@ -1,29 +1,29 @@
 \Chapter{Tervezés}
-Ebben a fejezetben a web alkalmazás kinézetéről és adatmoteljéről lesz szó.
+Ebben a fejezetben a webalkalmazás kinézetéről és adatmodeljéről lesz szó.
 
-Terveséhez az Uizard\cite{uizard} nevű oldalt használtam.
+A terveséhez az Uizard \cite{uizard} nevű oldalt használtam.
 
 \Section{A feladatom}
 
-A feladatom egy olyan webalkalmazás fejlesztése, amely alkalmas más oldalak autó hirdetéseinek aggregálására és az autók böngészésére. Alkalmazás funkciói:
+A feladatom egy olyan webalkalmazás fejlesztése, amely alkalmas más oldalak autó hirdetéseinek aggregálására és az autók böngészésére. Az alkalmazás funkciói a következős:
 
 \begin{itemize}
-\item Regisztráció, a felhasználó végzi el felhasználónév és jelszó pár megadásával.
-\item Felhasználó jogosultságának mosósítása:
+\item Regisztráció: a felhasználó végzi el felhasználónév és jelszó pár megadásával.
+\item Felhasználó jogosultságának módosítása:
 	\begin{itemize}
-	\item Admin: mindenhez hozzá fér, ő frissíti az elérhető autókat, felhasználók jogosultságát változtatja, és törölheti a felhasználót.
-	\item User: a hirdetése és a statisztika megtekintésére jogosult.
+	\item Admin: mindenhez hozzáfér, ő frissíti az elérhető autókat, felhasználók jogosultságát változtatja, és törölheti a felhasználót.
+	\item User: a hirdetések és a statisztika megtekintésére jogosult.
 	\end{itemize}
-\item Hirdetések megtekintése, ahol az oldalon megtalálható autókat tudjuk megtekinteni.
+\item Hirdetések megtekintése:Az oldalon megtalálható autókat tudjuk megtekinteni.
 \end{itemize}
 
 \Section{Kinézet és felépítés}
 
-A kinézet minél felhasználó barátiabb lesz, hogy felhasználók minél könnyebben tudják majd használni az alkalmazást
+A kinézet minél felhasználóbarátabb lesz, hogy felhasználók minél könnyebben tudják majd használni az alkalmazást, könnyen átlátható legyen számukra.
 
 \subsection{Regisztráció és bejelentkezés}
 
-Ha már van fiókunk az oldalhoz, akkor a felhasználónév és a jelszó megadása után be is tudunk jelentkezni az oldalra
+Ha már van fiókunk az oldalhoz, akkor a felhasználónév és a jelszó megadása után be is tudunk jelentkezni az oldalra. Ha rossz felhasználónevet vagy jelszót adunk meg akkor a következő értesítést fogjuk kapni: "Rossz felhasználónév vagy jelszó!".
 
 \newpage
 
@@ -34,7 +34,9 @@ Ha már van fiókunk az oldalhoz, akkor a felhasználónév és a jelszó megad�
 \label{fig:Bejelentkezés}
 \end{figure}
 
-Regisztrációs felületen a felhasználónév és jelszó megadása után be tudunk regisztrálni és máris tudjuk használni a weboldalt
+A regisztrációs felületen a felhasználónév és jelszó megadása után be tudunk regisztrálni és máris tudjuk használni a weboldalt.
+
+Ha nem adunk meg jelszót vagy felhasználó nevet akkor arról majd értesítést fogunk kapni ami a következő lesz : "Valamelyik mezőt kitöltetlenül hagyta!".
 
 \begin{figure}[h]
 \centering
@@ -46,7 +48,7 @@ Regisztrációs felületen a felhasználónév és jelszó megadása után be tu
 \newpage
 \subsection{Főoldal}
 
-A főoldalon látunk egy szűrő felületet, ahol ki lehet választani, hogy milyen márkájú és modellű autót milyen üzemanyag használattal, milyen évjárat és hengerűrtartalom között szeretnénk keresni, van lehetőség az ár sáv megadására is.
+A főoldalon látunk egy szűrő felületet, ahol ki lehet választani, hogy milyen márkájú és modellű autót milyen üzemanyag használattal, milyen évjárat és hengerűrtartalom között szeretnénk keresni. Van lehetőség az ár sáv megadására is.
 
 Látunk, egy diagramot ahol statisztikát tudunk megtekinteni az autókra keresések számáról.
 
@@ -57,13 +59,13 @@ Látunk, egy diagramot ahol statisztikát tudunk megtekinteni az autókra keres�
 \label{fig:Fooldal}
 \end{figure}
 
-Van egy csavarkulcs is, amit csak ADMIN felhasználó lát.
+Van egy csavarkulcs is, amit csak ADMIN felhasználó lát Admin felületre visz át.
 
 \subsection{Találatok megtekintése}
 
-A találati oldalon láthatjuk az autókat, egy képet az autóról, az alap információkat, mint évjárat, ló erő, vagy a köbcenti.
+A találati oldalon láthatjuk az autókat, egy képet az autóról, az alap információkat, mint évjárat, lóerő, vagy a köbcenti.
 
-Ha megtaláljuk a megfelelő autót, akkor a megnézem, gombra kattintva meg is tudjuk tekinteni az autót.
+Ha megtaláljuk a megfelelő autót, akkor a "megnézem", gombra kattintva meg is tudjuk tekinteni az autót.
 \newpage
 
 \begin{figure}[h]
@@ -73,12 +75,9 @@ Ha megtaláljuk a megfelelő autót, akkor a megnézem, gombra kattintva meg is 
 \label{fig:Talalatok}
 \end{figure}
 
-\subsection{Admin oldal}
+\subsection{Adminisztrátori oldal}
 
-Az Admin oldalon találunk egy táblázatot a felhasználókról, ami tartalmazza a felhasz-
-náló nevet és a jogosultságot. Jogosultságot itt tudjuk módosítani Admin is User között.
-
-Itt van lehetőség törölni a felhasználókat vagy az autók lekérdezésére a többi webol-
+Az Admin oldalon találunk egy táblázatot a felhasználókról, ami tartalmazza a felhasználó nevet és a jogosultságot. A jogosultságot itt tudjuk módosítani Admin és User között.Itt van lehetőség törölni a felhasználókat vagy az autók lekérdezésére a többi webol-
 dalról.
 
 \begin{figure}[h]
@@ -92,21 +91,21 @@ dalról.
 \Section{Adat táblák}
 
 Az alkalmazás elkészítéséhez 3 darab táblára lesz szükség egy
-felhasználók(users), autók(cars) és a keresési adatok(search data).
+felhasználók (\textit{users}), autók (\textit{cars}) és a keresési adatok (\textit{search data}).
 
-User tábla:
+\textit{users} tábla:
 \begin{itemize}
-\item Itt lesznek eltárolva a felhasználó adatai a regisztráció után. Ilyen a jelszó a felhasználónév és jogosultsága hogy admin vagy user-e. A jogosultságot az Admin rangú felhasználó tudja változtatni.
+\item Itt lesznek eltárolva a felhasználó adatai a regisztráció után. Ilyen a jelszó, a felhasználónév és jogosultsága, hogy admin vagy user-e. A jogosultságot az Admin rangú felhasználó tudja változtatni.
 \end{itemize}
 
-Cars tábla:
+\textit{cars} tábla:
 \begin{itemize}
-\item Az autók lekérdezése után itt tárolódnak autók és a hozzájuk tartozó adatokat és link ami az autó hirdetésére vezet át
+\item Az autók lekérdezése után itt tárolódnak az autók,  a hozzájuk tartozó adatok és a link ami az autó hirdetésére vezet át
 \end{itemize}
 
-Search data tábla:
+\textit{search data} tábla:
 \begin{itemize}
-\item Ez a tábla tárolja a márka nevét és azt az időpontot, amikor csak egy adott márkájú autóra keresnek rá.(Márkára szűrve keresnek)
+\item Ez a tábla tárolja a márka nevét, és azt az időpontot, amikor csak egy adott márkájú autóra keresnek rá (Márkára szűrve keresnek).
 \end{itemize}
  
  \begin{figure}[h]
@@ -116,42 +115,42 @@ Search data tábla:
 \label{fig:DataTable}
 \end{figure}
 
-A users és search data tábla között egy-több kapcsolat lesz mivel egy user-hez több keresési előzmény is tartozhat,de egy kereséshez csak egy felhasználó.
+A users és search data tábla között egy-több kapcsolat, lesz mivel egy user-hez több keresési előzmény is tartozhat, de egy kereséshez csak egy felhasználó.
 
-A cars tábla független lesz a többitől mivel ide az adatok más oldalról lesznek letöltve és így nem tartozik a user-hez.
+A cars tábla független lesz a többitől, mivel ide az adatok más oldalról lesznek letöltve, és így nem tartozik a user-hez.
 
  
 \Section{API-k megtervezése}
-A programban használt Api-król lesz szó ebben a fejezetben
+A programban használt API-król lesz szó ebben a szakaszban
 \begin{itemize}
-\item /set:
+\item /set
 
 Ha egy Admin frissíteni szeretné az autók tartalmát ez a végpont akkor fog meghívódni.
 \item /get
 
-Ha egy felhasználó autóra akar keresni akkor innen fognak lehívódni a megfelelő adatok.
+Ha egy felhasználó autóra akar keresni, akkor innen fognak lehívódni a megfelelő adatok.
 \item /getMakes
 
-Ez az Endpoint akkor fog meghívódni mikor egy felhasználó márkára akar szűrni, hogy lássa milyen márkájú autók találhatóak a weboldalon.
+Ez a végpont akkor fog meghívódni, amikor egy felhasználó márkára akar szűrni, hogy lássa milyen márkájú autók találhatóak a weboldalon.
 \item /getModels
 
-Márka kiválasztása után automatikusan meghívódik,azért, hogy tudjunk Márkán belül Modellekre is szűrni.
+Márka kiválasztása után automatikusan meghívódik azért,hogy tudjunk márkán belül modellekre is szűrni.
 
 \item /getData
 
 Ha a felhasználó statisztikát szeretne nézni, akkor ez a végpont hívódik majd meg.
 \item /postData
 
-Autók lekérdezésének folyamatában fog meghívódni és elmenti azt a Márkát az adatbázisba azzal a dátummal amikor szűrtek rá.
+Autók lekérdezésének folyamatában fog meghívódni és elmenti azt a márkát az adatbázisba azzal a dátummal amikor szűrtek rá.
 \item /authenticate
 Ezen a végponton tud majd bejelentkezni a felhasználó.
 
 \item /register
 
-Regisztráláskor ide küldődik majd el a felhasználó adatai.
+Regisztráláskor ide küldi majd el a felhasználó adatait a kliens.
 \item /users
 
-Itt tudjuk majd lekérdezni az összes felhasználót a hozzá tartózó nevet és jogosultságot.
+Itt tudjuk majd lekérdezni az összes felhasználót, a hozzá tartózó neveket és jogosultságoket.
 \item /deleteUser
 
 Ennél a végpontnál tudunk majd felhasználót törölni
