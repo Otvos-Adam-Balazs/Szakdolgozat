@@ -108,7 +108,7 @@ extends JpaRepository<User, Integer>{
 
 \Section{Autók lekérdezése az adatbázisba}
 
-Az adatok megszerzéséhez WebCrawlert használok, ami azt jelenti, hogy az adatokat a weboldalak HTML-tartalmából gyűjtöm össze. Ehhez az egész weboldal felépítését át kell hozzá néznem, mivel tag-ek vagy éppen cssQuery-vel lehet egyes adatokat kinyerni. 
+Az adatok megszerzéséhez WebCrawlert \cite{WebCrawler} használok, ami azt jelenti, hogy az adatokat a weboldalak HTML-tartalmából gyűjtöm össze. Ehhez az egész weboldal felépítését át kell hozzá néznem, mivel tag-ek vagy éppen cssQuery-vel lehet egyes adatokat kinyerni. 
 
 Esetemben ez azért volt elég nehezen megoldható, mert arra is figyelni kellett, hogy vannak olyan autók a honlapon, amik nem rendelkeznek az összes adattal, ezért ki kellett szűrni az úgymond hibásan feltöltötteket. 
 
@@ -312,7 +312,7 @@ Bejelentkezés után érhetjük el azokat a végpontokat, de csak azokat, amihez
 \item autók lekérdezése a többi oldalról.
 \end{itemize}
 
-Ehhez nagyon fontos a jogosultság vizsgálata, amit a @PreAuthorize annotációval valósítok meg amely SpEL (Spring Expression Language) használatával írhatók. Ellenőrzi a jogosultságot mielőtt be lépne a metódusba.(link).
+Ehhez nagyon fontos a jogosultság vizsgálata, amit a @PreAuthorize annotációval valósítok meg amely SpEL (Spring Expression Language) használatával írhatók. Ellenőrzi a jogosultságot mielőtt be lépne a metódusba.\cite{SpringSecurity}.
 
 Az alábbi kódrész egy példa arra, hogy hogyan is használható az annotáció. Ennél a példánál a /set végpontot csak az ADMIN jogú felhasználó érheti el.
 
