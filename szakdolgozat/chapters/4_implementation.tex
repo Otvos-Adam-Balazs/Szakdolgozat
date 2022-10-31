@@ -50,7 +50,7 @@ Ha nem adunk meg jelszót vagy felhasználó nevet akkor arról majd értesíté
 
 A főoldalon látunk egy szűrő felületet, ahol ki lehet választani, hogy milyen márkájú és modellű autót milyen üzemanyag használattal, milyen évjárat és hengerűrtartalom között szeretnénk keresni. Van lehetőség az ár sáv megadására is.
 
-Látunk, egy diagramot ahol statisztikát tudunk megtekinteni az autókra keresések számáról.
+Látunk, egy diagramot ahol statisztikát tudunk megtekinteni az autókra keresések számáról egy adott időintervallumon belül. Az x tengely az autómárkák neve lesz az y pedig a keresési számuk.
 
 \begin{figure}[h]
 \centering
@@ -59,7 +59,7 @@ Látunk, egy diagramot ahol statisztikát tudunk megtekinteni az autókra keres�
 \label{fig:Fooldal}
 \end{figure}
 
-Van egy csavarkulcs is, amit csak ADMIN felhasználó lát Admin felületre visz át.
+Van egy csavarkulcs is, amit csak ADMIN felhasználó lát Adminisztrátori felületre visz át.
 
 \subsection{Találatok megtekintése}
 
@@ -125,38 +125,38 @@ A programban használt API-król lesz szó ebben a szakaszban
 \begin{itemize}
 \item /set
 
-Ha egy Admin frissíteni szeretné az autók tartalmát ez a végpont akkor fog meghívódni.
+Ez egy get típusú kérés. Ha egy Admin frissíteni szeretné az autók tartalmát ez a végpont akkor fog meghívódni.
 \item /get
 
-Ha egy felhasználó autóra akar keresni, akkor innen fognak lehívódni a megfelelő adatok.
+Ez egy get típusú kérés. Ha egy felhasználó autóra akar keresni, akkor innen fognak lehívódni a megfelelő adatok.
 \item /getMakes
 
-Ez a végpont akkor fog meghívódni, amikor egy felhasználó márkára akar szűrni, hogy lássa milyen márkájú autók találhatóak a weboldalon.
+Ez egy get típusú kérés. Ez a végpont akkor fog meghívódni, amikor egy felhasználó márkára akar szűrni, hogy lássa milyen márkájú autók találhatóak a weboldalon.
 \item /getModels
 
-Márka kiválasztása után automatikusan meghívódik azért,hogy tudjunk márkán belül modellekre is szűrni.
+Ez egy get típusú kérés. Márka kiválasztása után automatikusan meghívódik azért,hogy tudjunk márkán belül modellekre is szűrni.
 
 \item /getData
 
-Ha a felhasználó statisztikát szeretne nézni, akkor ez a végpont hívódik majd meg.
+Ez egy get típusú kérés. Ha a felhasználó statisztikát szeretne nézni, akkor ez a végpont hívódik majd meg.
 \item /postData
 
-Autók lekérdezésének folyamatában fog meghívódni és elmenti azt a márkát az adatbázisba azzal a dátummal amikor szűrtek rá.
+Ez egy get típusú kérés. Autók lekérdezésének folyamatában fog meghívódni és elmenti azt a márkát az adatbázisba azzal a dátummal amikor szűrtek rá.
 \item /authenticate
-Ezen a végponton tud majd bejelentkezni a felhasználó.
+Ez egy post típusú kérés. Ezen a végponton tud majd bejelentkezni a felhasználó.
 
 \item /register
 
-Regisztráláskor ide küldi majd el a felhasználó adatait a kliens.
+Ez egy post típusú kérés. Regisztráláskor ide küldi majd el a felhasználó adatait a kliens.
 \item /users
 
-Itt tudjuk majd lekérdezni az összes felhasználót, a hozzá tartózó neveket és jogosultságoket.
+Ez egy get típusú kérés. Itt tudjuk majd lekérdezni az összes felhasználót, a hozzá tartózó neveket és jogosultságoket.
 \item /deleteUser
 
-Ennél a végpontnál tudunk majd felhasználót törölni
+Ez egy post típusú kérés. Ennél a végpontnál tudunk majd felhasználót törölni
 \item /updateUser
 
-Ennél  a végpontál tudjuk majd változtatni a felhasználó jogosultságát.
+Ez egy post típusú kérés. Ennél  a végpontál tudjuk majd változtatni a felhasználó jogosultságát.
 
 \end{itemize}
 

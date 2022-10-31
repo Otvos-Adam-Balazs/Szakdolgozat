@@ -1,5 +1,6 @@
 \Chapter{Backend Dokumentáció}
 
+Ebben a fejezetben azt fogom bemutatni, hogy egy Java(Spring Boot) applikáció hogyan épül fel.
 \Section{Projekt inicializálás}
 
 A projettet a Spring Boot Initializr segítségével hoztam létre.
@@ -111,6 +112,8 @@ extends JpaRepository<User, Integer>{
 Az adatok megszerzéséhez WebCrawlert \cite{WebCrawler} használok, ami azt jelenti, hogy az adatokat a weboldalak HTML-tartalmából gyűjtöm össze. Ehhez az egész weboldal felépítését át kell hozzá néznem, mivel tag-ek vagy éppen cssQuery-vel lehet egyes adatokat kinyerni. 
 
 Esetemben ez azért volt elég nehezen megoldható, mert arra is figyelni kellett, hogy vannak olyan autók a honlapon, amik nem rendelkeznek az összes adattal, ezért ki kellett szűrni az úgymond hibásan feltöltötteket. 
+
+A lekérdezett adatok mennyisége attól függ, hogy hány oldalt fésülök át a Crawler segítségével, és hogy mennyi olyan autó áll ezeken az oldalakon rendelkezésre ami az összes adattal rendelkezik. 
 
 Lent látható egy példa egy WebCrawler-re
 
