@@ -129,34 +129,42 @@ Ez egy get típusú kérés. Ha egy Admin frissíteni szeretné az autók tartal
 \item /get
 
 Ez egy get típusú kérés. Ha egy felhasználó autóra akar keresni, akkor innen fognak lehívódni a megfelelő adatok.
+Requestparamétereket vár és az autók listáját fogja vissza adni.
 \item /getMakes
 
 Ez egy get típusú kérés. Ez a végpont akkor fog meghívódni, amikor egy felhasználó márkára akar szűrni, hogy lássa milyen márkájú autók találhatóak a weboldalon.
+Nem vár semmilyen értéket. A márkákat fogja vissza adni.
 \item /getModels
 
 Ez egy get típusú kérés. Márka kiválasztása után automatikusan meghívódik azért,hogy tudjunk márkán belül modellekre is szűrni.
-
+Egy márka paramétert vár és a hozzá tartozó modelleket fogja vissza adni.
 \item /getData
 
 Ez egy get típusú kérés. Ha a felhasználó statisztikát szeretne nézni, akkor ez a végpont hívódik majd meg.
+Egy kezdő és egy vég dátumot vár. Közötte lévő adatokat fogja vissza adni.
 \item /postData
 
 Ez egy get típusú kérés. Autók lekérdezésének folyamatában fog meghívódni és elmenti azt a márkát az adatbázisba azzal a dátummal amikor szűrtek rá.
+Egy márka nevet és a egy felhasználó nevet vár. Nem ad vissza semmit.
 \item /authenticate
 Ez egy post típusú kérés. Ezen a végponton tud majd bejelentkezni a felhasználó.
-
+Egy Requestbody-t vár ami a felhasználónevet és jelszót tartalmazza. Tokent és a felhasználó adatait adja vissza.
 \item /register
 
 Ez egy post típusú kérés. Regisztráláskor ide küldi majd el a felhasználó adatait a kliens.
+Egy Requestbody-t vár ami a felhasználónevet és jelszót tartalmazza. 0,1,2-es értékekkel térhet vissza.
 \item /users
 
 Ez egy get típusú kérés. Itt tudjuk majd lekérdezni az összes felhasználót, a hozzá tartózó neveket és jogosultságoket.
+A felhasználók listáját adja vissza
 \item /deleteUser
 
-Ez egy post típusú kérés. Ennél a végpontnál tudunk majd felhasználót törölni
+Ez egy post típusú kérés. Ennél a végpontnál tudunk majd felhasználót törölni.
+Egy Requestbody-t vár ami a felhasználónevet tartalmazza.
 \item /updateUser
 
 Ez egy post típusú kérés. Ennél  a végpontál tudjuk majd változtatni a felhasználó jogosultságát.
+Egy Requestbody-t vár ami a felhasználónevet és az új jogosultságot tartalmazza.
 
 \end{itemize}
 
