@@ -12,6 +12,7 @@ parancs használatával jön létre a projektünk. Projekt létrejötte után az
 ng generate component "componentnev"
 \end{java}
  használatával tudunk új komponenseket létrehozni.
+A \ref{fig:mappaszerkezet}. ábra egy elkészített program mappaszerkezetét mutatja be.
 
 \begin{figure}[h]
 \centering
@@ -25,7 +26,7 @@ ng generate component "componentnev"
 
 \subsection{Regisztráció és bejelentkezés}
 Itt fog történni a regisztráció. Ez a legelső lépés, hogy tudjuk használni a webalkamazást.
-A regisztráláshoz szükséges egy felhasználónév és jelszó kombináció.
+A regisztráláshoz szükséges egy felhasználónév és jelszó kombináció (\ref{fig:regisztracio}. ábra).
 
 \begin{figure}[h]
 \centering
@@ -39,13 +40,13 @@ A felhasználó adatai JSON formátumba lesz elküldve a szerver felé.
 Tájékoztatást kapunk akkor is, hogy ha sikerült regisztráció, és arról is ha olyan felhasználónévvel szeretnénk regisztrálni, ami már használatban van, vagy éppen arról ha a jelszó mezőt kitöltetlenül hagytuk.
 
 Miután sikeresen regisztráltunk, vissza is léphetünk a bejelentkező felületre.
-A bejelentkező felületen ugyan azzal a felhasználónév és jelszó kombinációval be is tudunk jelentkezni.
+A bejelentkező felületen ugyan azzal a felhasználónév és jelszó kombinációval be is tudunk jelentkezni (\ref{fig:bejelentkezes}. ábra).
 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.37]{images/bejelentkezes.png}
-\caption{Regisztráció}
-\label{fig:regisztracio}
+\caption{Bejelentkezés}
+\label{fig:bejelentkezes}
 \end{figure}
 
 Ha hibás felhasználónevet vagy jelszót adunk meg, vagy éppen kitöltetlenül hagyunk egy mezőt, akkor tájékoztatást fogunk róla kapni.
@@ -58,7 +59,7 @@ Ha sikeresen bejelentkeztünk, akkor kliens kap egy tokent, és egy jogosultság
 Az alábbi programrész bemutatja, hogyan menthető el a Local Storage-ban az adat.
 
 \begin{java}
- public setToken(jwtToket:string){
+public setToken(jwtToket: string) {
     localStorage.setItem("jwtToken", jwtToket);
 }
 \end{java}
@@ -75,11 +76,11 @@ Bejelentkezés után átkerülünk a Főoldalra.
 \subsection{Főoldal}
 
 A Főoldalon össze tudjuk állítani a keresési feltételeinket ha szeretnénk szűrni az autókat.
-A "Keresés gombra" kattintva a kliens lekéri a megfelelő adatokkal rendelkező autókat, eltárolja a Local Storage-ba, és átvezényel minket a találati oldalra.
+A "Keresés" gombra kattintva a kliens lekéri a megfelelő adatokkal rendelkező autókat, eltárolja a Local Storage-ba, és átvezényel minket a találati oldalra.
 
-Ennél a kérésnél az adatokat Querry paraméterekben küldi el a szerver felé.
+Ennél a kérésnél az adatokat Query paraméterekben küldi el a szerver felé.
 
-Statisztikákat is tudunk megnézni az Autómárkák keresési számaival kapcsolatban akár dátum függvényében is, és így megtudhatjuk azt például, hogy egy adott évszakban melyik márkára kerestek rá a legtöbben.
+Statisztikákat is tudunk megnézni az Autómárkák keresési számaival kapcsolatban akár dátum függvényében is, és így megtudhatjuk azt például, hogy egy adott évszakban melyik márkára kerestek rá a legtöbben (\ref{fig:Találatok}. ábra).
 
 \begin{figure}[h]
 \centering
@@ -88,7 +89,7 @@ Statisztikákat is tudunk megnézni az Autómárkák keresési számaival kapcso
 \label{fig:Főoldal}
 \end{figure}
 
-A maximális dátum amit ki lehet választani, az mindig automatikusan változik annak függvényében hogy éppen hanyadika van.
+A maximális dátum amit ki lehet választani, az mindig automatikusan változik annak függvényében, hogy éppen hanyadika van.
 A kezdő dátum sosem lehet nagyobb a végső dátumnál, és a végső dátum sem lehet kisebb a kezdő dátumnál, ezt a rendszer automatikusan nem engedi.
 
 A diagramot a Chart.js \cite{Chartjs} segítségével készítettem el. 
@@ -122,16 +123,16 @@ new Chart(this.ctx, {
          ],
          labels: this.data
        },
-       options:{
-         events:['none'],
-         scales:{
-            yAxes:[{
-             ticks:{
+       options: {
+         events: ['none'],
+         scales: {
+            yAxes: [{
+             ticks: {
               beginAtZero: true
-                   }
-                  }]
-                }
-              }
+          }
+       }]
+     }
+   }
 }); 
 \end{java}
 
@@ -151,7 +152,7 @@ Az AuthGuard biztosít egy canActivate eseményt, ami az útvonal elérése elő
 
 \subsection{Találatok}
 
-Itt tudunk böngészni az autók között, és amikor kiválasztjuk a magunknak megfelelő autót akkor a megtekintés gombra kattintva eljutunk arra a weboldalra, ahol hirdetik az autót, és ott bővebb információt is találhatunk róla.
+Itt tudunk böngészni az autók között, és amikor kiválasztjuk a magunknak megfelelő autót akkor a megtekintés gombra kattintva eljutunk arra a weboldalra, ahol hirdetik az autót, és ott bővebb információt is találhatunk róla (\ref{fig:Találatok}. ábra).
 
 \begin{figure}[h]
 \centering
@@ -165,7 +166,7 @@ Az oldalon az autók a Local Storage-ból töltődnek be, tehát ha újra töltj
 
 \subsection{Adminisztrátori felület}
 
-Az adminisztrátori felületet csak az Admin jogosultsággal rendelkező felhasználó tudja elérni, és itt tudja az Adminisztrációs feladatokat elvégezni.
+Az adminisztrátori felületet csak az Admin jogosultsággal rendelkező felhasználó tudja elérni, és itt tudja az Adminisztrációs feladatokat elvégezni (\ref{fig:Admin}).
 
 \begin{figure}[h]
 \centering

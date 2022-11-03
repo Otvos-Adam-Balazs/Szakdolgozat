@@ -1,9 +1,9 @@
 \Chapter{Backend Dokumentáció}
 
-Ebben a fejezetben azt fogom bemutatni, hogy egy Java(Spring Boot) applikáció hogyan épül fel.
+Ebben a fejezetben azt fogom bemutatni, hogy egy Java (Spring Boot) applikáció hogyan épül fel.
 \Section{Projekt inicializálás}
 
-A projettet a Spring Boot Initializr segítségével hoztam létre.
+A projektet a Spring Boot Initializr segítségével hoztam létre.
 
 \begin{figure}[h]
 \centering
@@ -12,17 +12,16 @@ A projettet a Spring Boot Initializr segítségével hoztam létre.
 \label{fig:Spring_Boot_Initializr}
 \end{figure}
 
-Ahogy a 6.1 ábrán is látszik, ki lehet választani, hogy milyen típusú projekt legyen, milyen nyelven szeretnénk elkészíteni, a Spring Boot verzióját, metaadatokat, milyen Java verzióra szeretnénk fejleszteni.
+Ahogy a \ref{fig:Spring_Boot_Initializr}. ábrán is látszik, ki lehet választani, hogy milyen típusú projekt legyen, milyen nyelven szeretnénk elkészíteni, a Spring Boot verzióját, metaadatokat, milyen Java verzióra szeretnénk fejleszteni.
 
-Függőségeket tudunk megadni. A létrehozáskor a Spring Web-et, a Spring Data JPA-t és a Lombokot adtam hozzá.
+Függőségeket tudunk megadni. A létrehozáskor a Spring Web-et, a Spring Data JPA-t és a Lombok-ot adtam hozzá.
 
 A függőségek leírása a pom.xml fájlban találhatóak meg. 
 
-Mikor mindent kiválasztottunk a "GENERATE" gombra kattitnva le is generálja ne-
-künk az alap projektet.
+Mikor mindent kiválasztottunk a "GENERATE" gombra kattitnva le is generálja nekünk az alap projektet.
 \newpage
 
-Az elkészített projekt mappaszerkezete a 6.2-ábrán látható:
+Az elkészített projekt mappaszerkezete a \ref{fig:Intelij-mappaszerkezet}. ábrán látható:
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.7]{images/Intelij-mappaszerkezet.png}
@@ -34,7 +33,7 @@ Maga a szerver a http://localhost:8080/ címen fut.
 
 \Section{Adatbázis létrehozása} 
 
-Első lépésben az Adatbázis létrehozásához 2 függőséget kellett használnom amit a pom.xml fájlba kellett elhelyezni:
+Első lépésben az Adatbázis létrehozásához 2 függőséget kellett használnom amit a \textit{pom.xml} fájlba kellett elhelyezni:
 \begin{java}
 <dependency>
 	<groupId>org.springframework.boot</groupId>
@@ -54,8 +53,8 @@ Miután a behelyezés megtörtént, az adatbázisunkat hozzá kell kapcsolni a s
 spring.datasource.url=jdbc:postgresql://localhost:5432/cardb
 spring.datasource.username=postgres
 spring.datasource.password=Password
-spring.jpa.properties.hibernate.dialect= org.hibernate.dialect
-                                          .PostgreSQLDialect
+spring.jpa.properties.hibernate.dialect=
+  org.hibernate.dialect.PostgreSQLDialect
 spring.jpa.properties.hibernate.format_sql=true
 \end{java}
 
@@ -99,15 +98,14 @@ Példa egy Repository osztályra:
 \begin{java}
 @Repository
 public interface UserRepository
-extends JpaRepository<User, Integer>{
-
+extends JpaRepository<User, Integer> {
     List<User> deleteByLogin(String login);
     User findUserByLogin(String login);
 }
 \end{java}
 \newpage
 
-\Section{Autók lekérdezése az adatbázisba}
+\Section{Autók importálása az adatbázisba}
 
 Az adatok megszerzéséhez WebCrawlert \cite{WebCrawler} használok, ami azt jelenti, hogy az adatokat a weboldalak HTML-tartalmából gyűjtöm össze. Ehhez az egész weboldal felépítését át kell hozzá néznem, mivel tag-ek vagy éppen cssQuery-vel lehet egyes adatokat kinyerni. 
 
@@ -123,7 +121,7 @@ public void saveJoAutok(String joAutok)
     int i = 30;
     try {
       Document doc = Jsoup.connect(joAutok +"?page=" +i)
-      											.get();
+                          .get();
 
       Elements cars = doc.select("a.item");
       for (Element carD : cars) {
@@ -165,22 +163,22 @@ public void saveJoAutok(String joAutok)
          }
       } else {}
         }
-    }catch (Exception e){
-      System.out.println("Bad Price");
-    }
-  }
+      }catch (Exception e) {
+        System.out.println("Bad Price");
+      }
+   }
 }
 \end{java}
 
 \Section{Autók lekérdezése az adatbázisból}
 
-Ha valaki autókra szeretne keresni akkor a \textit{/get} végpont hívódik, meg ami Requestparamétereket vár ami más néven QueryParaméter. Rengeteg paraméter kell egy ilyen lekérdezéshez, amit opcionálisan ki is lehet hagyni, így arra volt szükségem hogy dinamikus lekérdezést tudjak létrehozni, amihez a Criteria API-t használom.
+Ha valaki autókra szeretne keresni akkor a \textit{/get} végpont hívódik, meg ami Requestparamétereket vár. Rengeteg paraméter kell egy ilyen lekérdezéshez, amit opcionálisan ki is lehet hagyni, így arra volt szükségem hogy dinamikus lekérdezést tudjak létrehozni, amihez a Criteria API-t használom.
 
-JPA Specification teszi azt lehetővé, hogy dinamikus legyen a lekérdezés ami a Criteria API-ra épül, tehát nem kell minden adatnak szerepelnie benne, vagy éppen úgy is működik, ha nincsen benne szereplő kritérium, hogy mi alapján kérdezze le az adatokat.(Akkor az összeset lekérdezi az adatbázisból.) A Predicate interfészével tudjuk összekötni a Query-nket a vizsgálat után.
+JPA Specification teszi azt lehetővé, hogy dinamikus legyen a lekérdezés ami a Criteria API-ra épül, tehát nem kell minden adatnak szerepelnie benne, vagy éppen úgy is működik, ha nincsen benne szereplő kritérium, hogy mi alapján kérdezze le az adatokat. (Akkor az összeset lekérdezi az adatbázisból.) A Predicate interfészével tudjuk összekötni a Query-nket a vizsgálat után.
 
 \begin{java}
-public List<Car> getCars(String makes, String model
-      ,String fuelType, String minAge,String maxAge,
+public List<Car> getCars(String makes, String model,
+      String fuelType, String minAge,String maxAge,
       String minEngine, String maxEngine, 
       String minPrice,String maxPrice) {
   return carRepository.findAll(new Specification<Car>() {
@@ -188,24 +186,24 @@ public List<Car> getCars(String makes, String model
     public Predicate toPredicate(Root<Car> root,
      CriteriaQuery<?> cq, CriteriaBuilder cb) {
         Predicate p = cb.conjunction();
-        if(!StringUtils.isEmpty(makes)){
+        if (!StringUtils.isEmpty(makes)){
             p = cb.and(p, cb.equal(root.get("makes"), makes));
         }
-        if(!StringUtils.isEmpty(model)){
+        if (!StringUtils.isEmpty(model)){
             p = cb.and(p, cb.equal(root.get("model"), model));
         }
-        if(!StringUtils.isEmpty(fuelType)){
+        if (!StringUtils.isEmpty(fuelType)){
             p = cb.and(p, cb.equal(root.get("fuelType")
                                        , fuelType));
         }
-        if(!StringUtils.isEmpty(minAge) && 
+        if (!StringUtils.isEmpty(minAge) && 
            !StringUtils.isEmpty(maxAge) &&
            Integer.parseInt(minAge)<Integer.parseInt(maxAge)){
             p = cb.and(p, cb.between(root.get("age"),
             Integer.parseInt(minAge),Integer
                                     .parseInt(maxAge)));
         }
-        if(!StringUtils.isEmpty(minEngine) &&
+        if (!StringUtils.isEmpty(minEngine) &&
            !StringUtils.isEmpty(maxEngine) &&
             Integer.parseInt(minEngine)<Integer
                                        .parseInt(maxEngine)){
@@ -213,7 +211,7 @@ public List<Car> getCars(String makes, String model
             Integer.parseInt(minEngine),Integer
                                        .parseInt(maxEngine)));
         }
-        if(!StringUtils.isEmpty(minPrice) &&
+        if (!StringUtils.isEmpty(minPrice) &&
            !StringUtils.isEmpty(maxPrice) &&
             Integer.parseInt(minPrice)<Integer
                                        .parseInt(maxPrice)){
@@ -227,29 +225,29 @@ public List<Car> getCars(String makes, String model
 }
 \end{java}
 
-Ahogy a 6.4 ábrán is látható, úgy oldottam meg azoknak a paramétereknek a vizsgálatát, ott ahol -tól -ig értékek vannak, hogy amikor a minimum érték nagyobb mint az maximum, akkor nem kerül bele a lekérdezésbe, és így nem fogunk hibát kapni sosem a keresésnél.
+Ahogy a kódban is látható, úgy oldottam meg azoknak a paramétereknek a vizsgálatát, ott ahol -tól -ig értékek vannak, hogy amikor a minimum érték nagyobb mint az maximum, akkor nem kerül bele a lekérdezésbe, és így nem fogunk hibát kapni sosem a keresésnél.
 
 \Section{Bejelentkezés és Regisztrációs}
 A regisztráció és bejelentkezés elkészítéséhez a Spring Security keretrendszert \cite{SpringSecurity} használtam, mert nagyban megkönnyíti a fejlesztési folyamatot, mivel biztosít előre elkészített modulokat.
 
 \subsection{Regisztráció}
 Ahhoz, hogy az oldalt használni lehessen  a regisztráció az egyik leg-
-fontosabb lépés.Ez felhasználónév és  jelszó megadásával lehetséges. 
+fontosabb lépés. Ez felhasználónév és  jelszó megadásával lehetséges. 
 
 Ha valaki be akar regisztrálni, akkor a  \textit{/register} végpont hívódik meg és a body-ban várja a felhasználónév és jelszó párosítást. Ennek a vizsgálatra az alábbi kódrészlet a felelős.
 
 \begin{java}
  public String register(UserDto userDto) {
      User user;
-     if(ObjectUtils.isEmpty(userDto.getLogin())){
+     if(ObjectUtils.isEmpty(userDto.getLogin())) {
        return "2";
-     } else{
+     } else {
          user = userRepository
            .findUserByLogin(userDto.getLogin());
      }
-     if(ObjectUtils.isEmpty(userDto.getPassword())) {
+     if (ObjectUtils.isEmpty(userDto.getPassword())) {
        return "2";
-       }else {
+       } else {
           if (user == null) {
              User newUser = new User();
              newUser.setLogin(userDto.getLogin());
@@ -260,7 +258,7 @@ Ha valaki be akar regisztrálni, akkor a  \textit{/register} végpont hívódik 
              return "0";
           } else {
              return "1";
-            }
+          }
         }
     }
 \end{java}
@@ -281,7 +279,7 @@ nációjával tudunk authentikálni. Az alábbi kódrészlet azt mutatja meg, ho
 \begin{java}
     @Override
     protected void configure(HttpSecurity http)
-     throws Exception{
+     throws Exception {
         http.cors();
         http.authorizeRequests()
         .antMatchers(HttpMethod.POST,"register")
@@ -303,7 +301,7 @@ nációjával tudunk authentikálni. Az alábbi kódrészlet azt mutatja meg, ho
           SessionCreationPolicy.STATELESS);
           http.addFilterBefore(
           jwtRequestFilter,
-      UsernamePasswordAuthenticationFilter.class);
+          UsernamePasswordAuthenticationFilter.class);
 }
 \end{java}
 
@@ -333,6 +331,7 @@ IOException {
 Mikor bejelentkezünk akkor a szerver generál egy JWT (JSON Web Token)\cite{JWT} tokent. Ez egy javasolt internetes szabvány az opcionálisan aláírt és/vagy opcionálisan titkosított adatok létrehozására, amelyek hasznos adattartalma bizonyos számú követelést deklaráló JSON-t tartalmaz. A tokeneket titkos kulccsal vagy nyilvános/titkos kulccsal írják alá.
 
 A token tartalmazni fogja a felhasználó nevét. A token minden ki-és bejelentkezés során újragenerálódik. 
+Az \ref{fig:JWT}. ábrán egy példa látható egy kódolt és dekódolt JWT-re.
 
 \begin{figure}[h]
 \centering
