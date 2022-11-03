@@ -110,7 +110,7 @@ felhasználók (\textit{users}), autók (\textit{cars}) és a keresési adatok (
  
  \begin{figure}[h]
 \centering
-\includegraphics[scale=0.6]{images/Data_Table.png}
+\includegraphics[scale=0.7]{images/Data_Table.png}
 \caption{Adatbázis táblák}
 \label{fig:DataTable}
 \end{figure}
@@ -126,10 +126,11 @@ A programban használt API-król lesz szó ebben a szakaszban
 \item /set
 
 Ez egy Post típusú kérés. Ha egy Admin frissíteni szeretné az autók tartalmát ez a végpont akkor fog meghívódni.
+0 értéket fog vissza adni.
 \item /get
 
 Ez egy Get típusú kérés. Ha egy felhasználó autóra akar keresni, akkor innen fognak lehívódni a megfelelő adatok.
-RequestParam-étereket vár és az autók listáját fogja vissza adni.
+RequestParam-étereket vár és az autók listáját fogja vissza adni. Az összes paraméter String típusú.
 \item /getMakes
 
 Ez egy Get típusú kérés. Ez a végpont akkor fog meghívódni, amikor egy felhasználó márkára akar szűrni, hogy lássa milyen márkájú autók találhatóak a weboldalon.
@@ -137,34 +138,34 @@ Nem vár semmilyen értéket. A márkákat fogja vissza adni.
 \item /getModels
 
 Ez egy Get típusú kérés. Márka kiválasztása után automatikusan meghívódik azért, hogy tudjunk márkán belül modellekre is szűrni.
-Egy márka paramétert vár és a hozzá tartozó modelleket fogja vissza adni.
+Egy márka paramétert vár és a hozzá tartozó modelleket fogja vissza adni. A paraméter String típusú.
 \item /dataGet
 
 Ez egy Get típusú kérés. Ha a felhasználó statisztikát szeretne nézni, akkor ez a végpont hívódik majd meg.
-Egy kezdő és egy vég dátumot vár. Közötte lévő adatokat fogja vissza adni.
+Egy kezdő és egy vég dátumot vár. Közötte lévő adatokat fogja vissza adni, JSON formátumban. A paraméterek String típusúak.
 \item /dataPost
 
 Ez egy Post típusú kérés. Autók lekérdezésének folyamatában fog meghívódni és elmenti azt a márkát az adatbázisba azzal a dátummal amikor szűrtek rá.
-Egy márka nevet és a egy felhasználó nevet vár. Nem ad vissza semmit.
+Egy RequestBody-t vár ami JSON formátumó és a felhasználónevet és a márkát fogja tartalmazni, String típusúak. Üres értékket ad vissza.
 \item /authenticate
 Ez egy Post típusú kérés. Ezen a végponton tud majd bejelentkezni a felhasználó.
-Egy Requestbody-t vár ami a felhasználónevet és jelszót tartalmazza. Tokent és a felhasználó adatait adja vissza.
+Egy Requestbody-t vár ami a felhasználónevet és jelszót tartalmazza, String Típusúak. Tokent és a felhasználó adatait adja vissza JSON formátumban.
 \item /register
 
 Ez egy Post típusú kérés. Regisztráláskor ide küldi majd el a felhasználó adatait a kliens.
-Egy Requestbody-t vár ami a felhasználónevet és jelszót tartalmazza. 0,1,2-es értékekkel térhet vissza.
+Egy Requestbody-t vár ami a felhasználónevet és jelszót tartalmazza, String típusuak. 0,1,2-es értékekkel térhet vissza.A visszatérés értéke 0, ha sikeres a regisztráció, 1, ha már létezik az adott nevű felhasználó, és 2, ha valamelyik adat nincs megadva.  
 \item /users
 
-Ez egy Get típusú kérés. Itt tudjuk majd lekérdezni az összes felhasználót, a hozzá tartózó neveket és jogosultságoket.
-A felhasználók listáját adja vissza
+Ez egy Get típusú kérés. Itt tudjuk majd lekérdezni az összes felhasználót, a hozzá tartózó neveket és jogosultságokat.
+A felhasználók listáját adja vissza JSON formátumban. Az adatok String típusúak.
 \item /userDelete
 
 Ez egy Delete típusú kérés. Ennél a végpontnál tudunk majd felhasználót törölni.
-Egy RequestParam-étert vár ami a felhasználónevet tartalmazza.
+Egy RequestParam-étert vár ami a felhasználónevet tartalmazza, típusa String. Üres értéket ad vissza.
 \item /userUpdate
 
 Ez egy Put típusú kérés. Ennél  a végpontál tudjuk majd változtatni a felhasználó jogosultságát.
-Egy Requestbody-t vár ami a felhasználónevet és az új jogosultságot tartalmazza.
+Egy Requestbody-t vár ami a felhasználónevet és az új jogosultságot tartalmazza. JSON formátumban kapja meg az adatokat, amik String típusúak. Üres értéket ad vissza.
 
 \end{itemize}
 
