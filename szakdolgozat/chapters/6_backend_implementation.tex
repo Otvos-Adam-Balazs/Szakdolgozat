@@ -8,7 +8,7 @@ A projektet a Spring Boot Initializr segítségével hoztam létre.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.37]{images/Spring_init.png}
-\caption{Spring Boot Initializr\cite{SpringInit}}
+\caption{Spring Boot Initializr \cite{SpringInit}}
 \label{fig:Spring_Boot_Initializr}
 \end{figure}
 
@@ -16,12 +16,12 @@ Ahogy a \ref{fig:Spring_Boot_Initializr}. ábrán is látszik, ki lehet választ
 
 Függőségeket tudunk megadni. A létrehozáskor a Spring Web-et, a Spring Data JPA-t és a Lombok-ot adtam hozzá.
 
-A függőségek leírása a pom.xml fájlban találhatóak meg. 
+A függőségek leírása a \textit{pom.xml} fájlban találhatóak meg. 
 
 Mikor mindent kiválasztottunk a "GENERATE" gombra kattitnva le is generálja nekünk az alap projektet.
 \newpage
 
-Az elkészített projekt mappaszerkezete a \ref{fig:Intelij-mappaszerkezet}. ábrán látható:
+Az elkészített projekt mappaszerkezete a \ref{fig:Intelij-mappaszerkezet}. ábrán látható.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.7]{images/Intelij-mappaszerkezet.png}
@@ -29,7 +29,7 @@ Az elkészített projekt mappaszerkezete a \ref{fig:Intelij-mappaszerkezet}. áb
 \label{fig:Intelij-mappaszerkezet}
 \end{figure}
 
-Maga a szerver a http://localhost:8080/ címen fut.
+Maga a szerver a \textit{http://localhost:8080/} címen fut.
 
 \Section{Adatbázis létrehozása} 
 
@@ -59,13 +59,13 @@ spring.jpa.properties.hibernate.format_sql=true
 \end{java}
 
 Az URL az adatbázis szerver és maga az adatbázis eléréséhez szükséges. A szerver a 5432 porton fut és a cardb nevű adatbázisra lesz szükségünk.
-A username és password ahhoz kell, hogy tudjuk magunkat hitelesíteni.
+A \textit{username} és \textit{password} ahhoz kell, hogy tudjuk magunkat hitelesíteni.
 
-Következő lépésben létrehoztam a 3 adatbázis táblát(car,search data,users)amihez létrehoztam mindegyikhez egy entity-t és egy repository-t.
+Következő lépésben létrehoztam a 3 adatbázis táblát (\textit{car}, \textit{search\_data}, \textit{users})amihez létrehoztam mindegyikhez egy \textit{entity}-t és egy \textit{repository}-t.
 
-Entity-n belül tudjuk megadni, hogy a táblán belül milyen oszlopok legyenek, és hogy mi legyen az elsődleges kulcs.
+\textit{Entity}-n belül tudjuk megadni, hogy a táblán belül milyen oszlopok legyenek, és hogy mi legyen az elsődleges kulcs.
 
-Példa egy Entity Java osztályra, ami a users nevű táblát hozza létre:
+Példa egy \textit{Entity} Java osztályra, ami a users nevű táblát hozza létre:
 
 \begin{java}
 @Getter
@@ -91,9 +91,9 @@ public class User {
 }
 \end{java}
 
-A Repository-ra azért van szükségünk hogy a szerverünk tudjon kommunikálni az adatbázissal, tehát hogy tudjon adatot lekérdezni, felvinni törölni vagy éppen módosítani, és ehhez ki kell terjeszteni a JpaRepository osztályt, ami tartalmaz alapvető műveleteket.
+A \textit{Repository}-ra azért van szükségünk hogy a szerverünk tudjon kommunikálni az adatbázissal, tehát hogy tudjon adatot lekérdezni, felvinni törölni vagy éppen módosítani, és ehhez ki kell terjeszteni a \textit{JpaRepository} osztályt, ami tartalmaz alapvető műveleteket.
 
-Példa egy Repository osztályra:
+Példa egy \textit{Repository} osztályra:
 
 \begin{java}
 @Repository
@@ -107,13 +107,13 @@ extends JpaRepository<User, Integer> {
 
 \Section{Autók importálása az adatbázisba}
 
-Az adatok megszerzéséhez WebCrawlert \cite{WebCrawler} használok, ami azt jelenti, hogy az adatokat a weboldalak HTML-tartalmából gyűjtöm össze. Ehhez az egész weboldal felépítését át kell hozzá néznem, mivel tag-ek vagy éppen cssQuery-vel lehet egyes adatokat kinyerni. 
+Az adatok megszerzéséhez WebCrawlert \cite{WebCrawler} használok, ami azt jelenti, hogy az adatokat a weboldalak HTML-tartalmából gyűjtöm össze. Ehhez az egész weboldal felépítését át kell hozzá néznem, mivel tag-ek vagy éppen \textit{cssQuery}-vel lehet egyes adatokat kinyerni. 
 
 Esetemben ez azért volt elég nehezen megoldható, mert arra is figyelni kellett, hogy vannak olyan autók a honlapon, amik nem rendelkeznek az összes adattal, ezért ki kellett szűrni az úgymond hibásan feltöltötteket. 
 
-A lekérdezett adatok mennyisége attól függ, hogy hány oldalt fésülök át a Crawler segítségével, és hogy mennyi olyan autó áll ezeken az oldalakon rendelkezésre ami az összes adattal rendelkezik. 
+A lekérdezett adatok mennyisége attól függ, hogy hány oldalt fésülök át a Crawler segítségével, és hogy mennyi olyan autó áll ezeken az oldalakon rendelkezésre, ami az összes adattal rendelkezik. 
 
-Lent látható egy példa egy WebCrawler-re
+Lent látható egy példa egy WebCrawler-re.
 
 \begin{java}
 public void saveJoAutok(String joAutok)
@@ -147,20 +147,20 @@ public void saveJoAutok(String joAutok)
       car.setModel(CarName[1]);
       System.out.println(CarData);
       car.setFuelType(CarData[7]);
-      String Age[] =carD.select("b").text().split(" ");
+      String Age[] = carD.select("b").text().split(" ");
 
       if (car.getFuelType().equals("Benzin") ||
         car.getFuelType().equals("Dizel")) {
       try {
-         car.setAge(Integer.parseInt
-         (Age[2].substring(0,Age[2].indexOf("."))));
-         car.setEngine(Integer.parseInt(CarData[5]));
-         car.setHp(Integer.parseInt(CarData[3]));
-         car.setMileage(CarData[0] + CarData[1]);
-         carRepository.save(car);
-       }catch (Exception e){
+        car.setAge(Integer.parseInt
+        (Age[2].substring(0,Age[2].indexOf("."))));
+        car.setEngine(Integer.parseInt(CarData[5]));
+        car.setHp(Integer.parseInt(CarData[3]));
+        car.setMileage(CarData[0] + CarData[1]);
+        carRepository.save(car);
+       }catch (Exception e) {
              System.out.println("Some Data is Bad!");
-         }
+       }
       } else {}
         }
       }catch (Exception e) {
@@ -186,38 +186,38 @@ public List<Car> getCars(String makes, String model,
     public Predicate toPredicate(Root<Car> root,
      CriteriaQuery<?> cq, CriteriaBuilder cb) {
         Predicate p = cb.conjunction();
-        if (!StringUtils.isEmpty(makes)){
+        if (!StringUtils.isEmpty(makes)) {
             p = cb.and(p, cb.equal(root.get("makes"), makes));
         }
-        if (!StringUtils.isEmpty(model)){
+        if (!StringUtils.isEmpty(model)) {
             p = cb.and(p, cb.equal(root.get("model"), model));
         }
-        if (!StringUtils.isEmpty(fuelType)){
+        if (!StringUtils.isEmpty(fuelType)) {
             p = cb.and(p, cb.equal(root.get("fuelType")
                                        , fuelType));
         }
         if (!StringUtils.isEmpty(minAge) && 
-           !StringUtils.isEmpty(maxAge) &&
-           Integer.parseInt(minAge)<Integer.parseInt(maxAge)){
+            !StringUtils.isEmpty(maxAge) &&
+            Integer.parseInt(minAge)<Integer.parseInt(maxAge)) {
             p = cb.and(p, cb.between(root.get("age"),
             Integer.parseInt(minAge),Integer
                                     .parseInt(maxAge)));
         }
         if (!StringUtils.isEmpty(minEngine) &&
-           !StringUtils.isEmpty(maxEngine) &&
+            !StringUtils.isEmpty(maxEngine) &&
             Integer.parseInt(minEngine)<Integer
-                                       .parseInt(maxEngine)){
+                                       .parseInt(maxEngine)) {
             p = cb.and(p, cb.between(root.get("engine"),
             Integer.parseInt(minEngine),Integer
                                        .parseInt(maxEngine)));
         }
         if (!StringUtils.isEmpty(minPrice) &&
-           !StringUtils.isEmpty(maxPrice) &&
+            !StringUtils.isEmpty(maxPrice) &&
             Integer.parseInt(minPrice)<Integer
-                                       .parseInt(maxPrice)){
+                                       .parseInt(maxPrice)) {
              p = cb.and(p, cb.between(root.get("price"),
-              Integer.parseInt(minPrice),Integer
-                                        .parseInt(maxPrice)));
+             Integer.parseInt(minPrice),Integer
+                                       .parseInt(maxPrice)));
          }
          return p;
      }
@@ -231,36 +231,35 @@ Ahogy a kódban is látható, úgy oldottam meg azoknak a paramétereknek a vizs
 A regisztráció és bejelentkezés elkészítéséhez a Spring Security keretrendszert \cite{SpringSecurity} használtam, mert nagyban megkönnyíti a fejlesztési folyamatot, mivel biztosít előre elkészített modulokat.
 
 \subsection{Regisztráció}
-Ahhoz, hogy az oldalt használni lehessen  a regisztráció az egyik leg-
-fontosabb lépés. Ez felhasználónév és  jelszó megadásával lehetséges. 
+Ahhoz, hogy az oldalt használni lehessen  a regisztráció az egyik legfontosabb lépés. Ez felhasználónév és  jelszó megadásával lehetséges. 
 
 Ha valaki be akar regisztrálni, akkor a  \textit{/register} végpont hívódik meg és a body-ban várja a felhasználónév és jelszó párosítást. Ennek a vizsgálatra az alábbi kódrészlet a felelős.
 
 \begin{java}
- public String register(UserDto userDto) {
-     User user;
-     if(ObjectUtils.isEmpty(userDto.getLogin())) {
-       return "2";
-     } else {
-         user = userRepository
-           .findUserByLogin(userDto.getLogin());
-     }
-     if (ObjectUtils.isEmpty(userDto.getPassword())) {
-       return "2";
-       } else {
-          if (user == null) {
-             User newUser = new User();
-             newUser.setLogin(userDto.getLogin());
-             newUser.setPassword(bCryptPasswordEncoder
-                        .encode(userDto.getPassword()));
-             newUser.setAuthority("USER");
-             userRepository.save(newUser);
-             return "0";
-          } else {
-             return "1";
-          }
+public String register(UserDto userDto) {
+    User user;
+    if(ObjectUtils.isEmpty(userDto.getLogin())) {
+      return "2";
+    } else {
+        user = userRepository
+          .findUserByLogin(userDto.getLogin());
+    }
+    if (ObjectUtils.isEmpty(userDto.getPassword())) {
+      return "2";
+    } else {
+        if (user == null) {
+           User newUser = new User();
+           newUser.setLogin(userDto.getLogin());
+           newUser.setPassword(bCryptPasswordEncoder
+                      .encode(userDto.getPassword()));
+           newUser.setAuthority("USER");
+           userRepository.save(newUser); 
+           return "0";
+        } else {
+           return "1";
         }
     }
+}
 \end{java}
 
 Először megvizsgálja, hogy mind a kettő adat rendelkezésre áll-e a bejelentkezéshez, és ha nem, akkor 2 értéket ad vissza. Ha minden rendben van megnézi, hogy az adat-
@@ -313,9 +312,9 @@ Bejelentkezés után érhetjük el azokat a végpontokat, de csak azokat, amihez
 \item autók lekérdezése a többi oldalról.
 \end{itemize}
 
-Ehhez nagyon fontos a jogosultság vizsgálata, amit a @PreAuthorize annotációval valósítok meg amely SpEL (Spring Expression Language) használatával írhatók. Ellenőrzi a jogosultságot mielőtt be lépne a metódusba.\cite{SpringSecurity}.
+Ehhez nagyon fontos a jogosultság vizsgálata, amit a @PreAuthorize annotációval valósítok meg amely SpEL (Spring Expression Language) használatával írhatók. Ellenőrzi a jogosultságot mielőtt be lépne a metódusba \cite{SpringSecurity}.
 
-Az alábbi kódrész egy példa arra, hogy hogyan is használható az annotáció. Ennél a példánál a /set végpontot csak az ADMIN jogú felhasználó érheti el.
+Az alábbi kódrész egy példa arra, hogy hogyan is használható az annotáció. Ennél a példánál a \textit{/set} végpontot csak az ADMIN jogú felhasználó érheti el.
 
 \begin{java}
 @GetMapping("/set")

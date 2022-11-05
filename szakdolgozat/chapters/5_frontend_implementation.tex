@@ -12,7 +12,7 @@ parancs használatával jön létre a projektünk. Projekt létrejötte után az
 ng generate component "componentnev"
 \end{java}
  használatával tudunk új komponenseket létrehozni.
-A \ref{fig:mappaszerkezet}. ábra egy elkészített program mappaszerkezetét mutatja be.
+Az \ref{fig:mappaszerkezet}. ábra egy elkészített program mappaszerkezetét mutatja be.
 
 \begin{figure}[h]
 \centering
@@ -63,10 +63,10 @@ public setToken(jwtToket: string) {
     localStorage.setItem("jwtToken", jwtToket);
 }
 \end{java}
-A következő pedig azt mutatja be,hogy hogyan lehet kitörölni az adatokat belőle.
+A következő pedig azt mutatja be, hogy hogyan lehet kitörölni az adatokat belőle.
 
 \begin{java}
-public logOut(){
+public logOut() {
     localStorage.clear();
 }
 \end{java}
@@ -98,7 +98,7 @@ npm i chart.js@2.9.4
 \end{java}
 paranccsal adtam hozzá az Angular projektemhez.
 
-A Chart.js \cite{Chartjs2} egy diagram rajzoló, ingyenes JavaScript-könyvtár HTML-alapú diagramok létrehozására. Ez az egyik legegyszerűbb JavaScript vizuali-zációs könyvtár, ami több diagram típust is támogat például:
+A Chart.js \cite{Chartjs2} egy diagram rajzoló, ingyenes JavaScript-könyvtár HTML-alapú diagramok létrehozására. Ez az egyik legegyszerűbb JavaScript vizualizációs könyvtár, ami több diagram típust is támogat például:
 
 \begin{itemize}
 \item vonaldiagram,
@@ -148,7 +148,7 @@ Az Angular AuthGuard \cite{Authguard} bővítményével valósítottam meg az ú
 ng g guard auth
 \end{java}
 parancsal hoztam létre.
-Az AuthGuard biztosít egy canActivate eseményt, ami az útvonal elérése előtt hívódik meg, és ha rendelkezünk a megfelelő jogosultsággal, akkor beenged minket az adott lapra, viszont ha nincs hozzá jogunk, akkor megtudjuk azt is adni, hogy hova irányítson át minket a weboldalon belül.
+Az AuthGuard biztosít egy \textit{canActivate} eseményt, ami az útvonal elérése előtt hívódik meg, és ha rendelkezünk a megfelelő jogosultsággal, akkor beenged minket az adott lapra, viszont ha nincs hozzá jogunk, akkor megtudjuk azt is adni, hogy hova irányítson át minket a weboldalon belül.
 
 \subsection{Találatok}
 
@@ -166,7 +166,7 @@ Az oldalon az autók a Local Storage-ból töltődnek be, tehát ha újra töltj
 
 \subsection{Adminisztrátori felület}
 
-Az adminisztrátori felületet csak az Admin jogosultsággal rendelkező felhasználó tudja elérni, és itt tudja az Adminisztrációs feladatokat elvégezni (\ref{fig:Admin}).
+Az adminisztrátori felületet csak az Admin jogosultsággal rendelkező felhasználó tudja elérni, és itt tudja az Adminisztrációs feladatokat elvégezni (\ref{fig:Admin}. ábra).
 
 \begin{figure}[h]
 \centering
@@ -179,6 +179,6 @@ Van egy "Autók lekérdezése" gombunk, amit ha megnyomunk,  akkor egy kérést 
 
 Az Adminnak lehetősége van a felhasználók jogosultságának megváltoztatására, ami lehet Admin vagy User. Utána a mentés gombbal el is tudja azt menteni.
 
-Lehetőség van a felhasználó kitiltására vagy törlésére a "törlés" gombra kattintva és utána már azzal a felhasználói fiókkal már nem lehet bejelentkezni.
+Lehetőség van a felhasználó kitiltására vagy törlésére a "törlés" gombra kattintva, és utána már azzal a felhasználói fiókkal már nem lehet bejelentkezni.
 
 
