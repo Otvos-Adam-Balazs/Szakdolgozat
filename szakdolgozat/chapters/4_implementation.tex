@@ -13,7 +13,7 @@ A feladatom egy olyan webalkalmazás fejlesztése, amely alkalmas más oldalak a
 	\item Admin: mindenhez hozzáfér, ő frissíti az elérhető autókat, felhasználók jogosultságát változtatja, és törölheti a felhasználót.
 	\item User: a hirdetések és a statisztika megtekintésére jogosult.
 	\end{itemize}
-\item Hirdetések megtekintése:Az oldalon megtalálható autókat tudjuk megtekinteni.
+\item Hirdetések megtekintése: Az oldalon megtalálható autókat tudjuk megtekinteni.
 \end{itemize}
 
 \Section{Kinézet és felépítés}
@@ -24,7 +24,7 @@ A terveséhez az Uizard \cite{uizard} nevű oldalt használtam.
 
 \subsection{Regisztráció és bejelentkezés}
 
-Ha már van fiókunk az oldalhoz, akkor a felhasználónév és a jelszó megadása után be is tudunk jelentkezni az oldalra(\ref{fig:Bejelentkezés}. ábra). Ha rossz felhasználónevet vagy jelszót adunk meg akkor a következő értesítést fogjuk kapni: "Rossz felhasználónév vagy jelszó!".
+Ha már van fiókunk az oldalhoz, akkor a felhasználónév és a jelszó megadása után be is tudunk jelentkezni az oldalra (\ref{fig:Bejelentkezés}. ábra). Ha rossz felhasználónevet vagy jelszót adunk meg, akkor a következő értesítést fogjuk kapni: "Rossz felhasználónév vagy jelszó!".
 
 \newpage
 
@@ -35,9 +35,9 @@ Ha már van fiókunk az oldalhoz, akkor a felhasználónév és a jelszó megad�
 \label{fig:Bejelentkezés}
 \end{figure}
 
-A regisztrációs felületen a felhasználónév és jelszó megadása után be tudunk regisztrálni(\ref{fig:Regisztráció}. ábra) és máris tudjuk használni a weboldalt.
+A regisztrációs felületen a felhasználónév és jelszó megadása után be tudunk regisztrálni (\ref{fig:Regisztráció}. ábra), és máris tudjuk használni a weboldalt.
 
-Ha nem adunk meg jelszót vagy felhasználó nevet akkor arról majd értesítést fogunk kapni ami a következő lesz : "Valamelyik mezőt kitöltetlenül hagyta!".
+Ha nem adunk meg jelszót vagy felhasználó nevet, akkor arról majd értesítést fogunk kapni, ami a következő lesz: "Valamelyik mezőt kitöltetlenül hagyta!".
 
 \begin{figure}[h]
 \centering
@@ -49,9 +49,9 @@ Ha nem adunk meg jelszót vagy felhasználó nevet akkor arról majd értesíté
 \newpage
 \subsection{Főoldal}
 
-A főoldalon látunk egy szűrő felületet, ahol ki lehet választani, hogy milyen márkájú és modellű autót milyen üzemanyag használattal, milyen évjárat és hengerűrtartalom között szeretnénk keresni. Van lehetőség az ár sáv megadására is(\ref{fig:Fooldal}. ábra).
+A főoldalon látunk egy szűrő felületet, ahol ki lehet választani, hogy milyen márkájú és modellű autót milyen üzemanyag használattal, milyen évjárat és hengerűrtartalom között szeretnénk keresni. Van lehetőség az ár sáv megadására is (\ref{fig:Fooldal}. ábra).
 
-Látunk, egy diagramot ahol statisztikát tudunk megtekinteni az autókra keresések számáról egy adott időintervallumon belül. Az vízszintes tengelyen az autómárkák neve lesz az függőlegesen pedig a keresési számuk.
+Látunk, egy diagramot ahol statisztikát tudunk megtekinteni az autókra keresések számáról egy adott időintervallumon belül. A vízszintes tengelyen az autómárkák neve lesz, a függőlegesen pedig a keresések száma.
 
 \begin{figure}[h]
 \centering
@@ -60,7 +60,7 @@ Látunk, egy diagramot ahol statisztikát tudunk megtekinteni az autókra keres�
 \label{fig:Fooldal}
 \end{figure}
 
-Van egy csavarkulcs is, amit csak ADMIN felhasználó lát Adminisztrátori felületre visz át.
+Van egy csavarkulcs ikon is, amit csak ADMIN felhasználó lát. Ez a gomb az adminisztrátori felületre visz át.
 
 \subsection{Találatok megtekintése}
 
@@ -90,9 +90,10 @@ Az Adminisztátori oldalon találunk egy táblázatot a felhasználókról, ami 
 
 \Section{Adat táblák}
 
-Az alkalmazás elkészítéséhez 3 darab táblára lesz szükség egy
-felhasználók (\textit{users}), autók (\textit{cars}) és a keresési adatok (\textit{search\_data}) (\ref{fig:DataTable}. ábra).
+Az alkalmazás elkészítéséhez 3 darab táblára lesz szükség: egy
+felhasználók (\textit{users}), autók (\textit{cars}) és a keresési adatok (\textit{search\_data}) táblára (\ref{fig:DataTable}. ábra).
 
+\medskip
 \textit{users} tábla:
 \begin{itemize}
 \item Itt lesznek eltárolva a felhasználó adatai a regisztráció után. Ilyen a jelszó, a felhasználónév és jogosultsága, hogy admin vagy user-e. A jogosultságot az Admin rangú felhasználó tudja változtatni.
@@ -117,11 +118,11 @@ felhasználók (\textit{users}), autók (\textit{cars}) és a keresési adatok (
 
 A \textit{users} és \textit{search\_data} tábla között egy-több kapcsolat, lesz mivel egy \textit{user}-hez több keresési előzmény is tartozhat, de egy kereséshez csak egy felhasználó.
 
-A \textit{cars} tábla független lesz a többitől, mivel ide az adatok más oldalról lesznek letöltve, és így nem tartozik a \textit{user}-hez.
+A \textit{cars} tábla független lesz a többitől, mivel ide az adatok más oldalról lesznek letöltve, és így nem tartozik a \textit{user} táblához.
 
  
 \Section{API-k megtervezése}
-A programban használt API-król lesz szó ebben a szakaszban
+A programban használt API-ról, a definiált útvonalakról lesz szó ebben a szakaszban.
 \begin{itemize}
 \item /set
 
