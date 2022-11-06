@@ -1,5 +1,6 @@
 package com.example.webcrawler.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,5 +31,6 @@ public class User {
     private String authority;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private Set<Data> datas;
 }

@@ -30,13 +30,13 @@ public class UserController {
         return userRepository.findAll();
     }
 
-    @PostMapping("/deleteUser")
+    @DeleteMapping("/userDelete")
     @PreAuthorize("hasRole('ADMIN')")
-    public void deleteUser(@RequestBody String login){
+    public void deleteUser(@RequestParam(name = "login") String login){
          userService.deleteByLogin(login);
     }
 
-    @PostMapping("/updateUser")
+    @PutMapping("/userUpdate")
     @PreAuthorize("hasRole('ADMIN')")
     public void updateUser(@RequestBody UserDto userDto){
         userService.updateUser(userDto);

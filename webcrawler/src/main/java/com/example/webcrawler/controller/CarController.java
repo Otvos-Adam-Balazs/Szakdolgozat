@@ -21,10 +21,10 @@ public class CarController {
     @Autowired
     private CarRepository carRepository;
 
-    @GetMapping("/set")
+    @PostMapping("/set")
     @PreAuthorize("hasRole('ADMIN')")
-    public void getData() throws InterruptedException, IOException {
-       carService.saveCar();
+    public String getData() throws InterruptedException, IOException {
+      return carService.saveCar();
 
     }
 
