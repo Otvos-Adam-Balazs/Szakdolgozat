@@ -10,7 +10,8 @@ A backend a webalkalmazás szerver oldala, amit nem lát a felhasználó. Itt sz
 
 A Java \cite{Java} egy objektum orientált programozási nyelv, amit James Gosling fejlesztett a ’90-es években Sun Microsystemsnél. Eredetileg interaktív televíziózásra készült, de akkoriban túl fejlett volt digitális kábeltelevíziós ipar számára.
 
-A Java célja a hordozhatóság, ami azt jelenti, hogy a Java-ban írt programoknak hasonlóan kell futnia bármely JRE-vel rendelkező operációs rendszeren. Java nyelvi kódot először bájtkódra fordítják, ami hasonló a gépi kódhoz, de virtuális gép általi végrehajtásra készülnek. Vannak mikro vezérlők amik képesek a Java bájtkódját közvetlenül hardveren futtatni.
+A Java célja a hordozhatóság, ami azt jelenti, hogy a Java-ban írt programoknak hasonlóan kell futnia bármely JRE-vel rendelkező operációs rendszeren. Java nyelvi kódot először bájtkódra fordítják, ami hasonló a gépi kódhoz, de virtuális gép általi végrehajtásra készülnek. Vannak mikro vezérlők amik képesek a Java bájtkódját közvet-
+lenül hardveren futtatni.
 
 A Java a szintaxisát a C és C++ nyelvből örökölte.A Java nem támogatja az operátok túlterhelést vagy a többszörös öröklődést (interfészek esetében lehetséges).
 
@@ -20,7 +21,8 @@ A Java az egyik legelterjedtebb programozási nyelv, mivel az elterjedt operáci
 
 \subsection{Spring Boot}
 
-A Spring egy Java alapú webalkalmazás-keretrendszer, ami nyílt forráskódú, és a Spring Boot Spring-keretrendszerre épülő bővítmény. A Spring testreszabott webalkalmazások létrehozásához tökéletes, ami teljesen konfigurálható az előre elkészített fügvénykönyvtárakkal. Spring Boottal különálló Spring alkalmazásokat hozhatunk létre, amit azonnal futtathatunk.
+A Spring egy Java alapú webalkalmazás-keretrendszer, ami nyílt forráskódú, és a Spring Boot Spring-keretrendszerre épülő bővítmény. A Spring testreszabott webalkalmazások létrehozásához tökéletes, ami teljesen konfigurálható az előre elkészített fügvénykönyv-
+tárakkal. Spring Boottal különálló Spring alkalmazásokat hozhatunk létre, amit azonnal futtathatunk.
 
 A Spring Boot használata nagyon egyszerű, jó minőségű alkalmazásokat lehet benne fejleszteni kevesebb fejlesztési idő alatt. Beépített HTTP-kiszolgálókat tartalmaz, mint a Tomcat és a Jerry.
 
@@ -44,7 +46,8 @@ Az adatbázis nem más, mint elektronikusan tárolt adatok, amik rendszerezve va
 
 A PostgreSQL \cite{PostgreSQL} egy nyílt forráskódú relációs adatbáziskezelő rendszer, ami az egyik legrégebbi relációs adatbázis, nem mellesleg ingyenes. A relációs adatbázisok relációs modellen alapulnak. A relációs modell az adatokat egy vagy több sorból és oszlopból álló táblázatba (relációba) rendezi, és minden sorhoz rendel egy egyedi kulcsot.
 
-A PostgreSQL a Kaliforniai egyetem Ingres projektjéből fejlődött ki. Az elterjedtebb operációs rendszerekkel kompatibilis. Támogatja a relációs és a nem relációs lekérdezéseket is, így JSON vagy SQL alapú útvonal-kifejezésekkel is elérhetőek az adatok.  Mind ezek miatt az egyik legnépszerűbb adatbázismotor \ref{fig:Adatbázisok}.
+A PostgreSQL a Kaliforniai egyetem Ingres projektjéből fejlődött ki. Az elterjedtebb operációs rendszerekkel kompatibilis. Támogatja a relációs és a nem relációs lekérdezé-
+seket is, így JSON vagy SQL alapú útvonal-kifejezésekkel is elérhetőek az adatok.  Mind ezek miatt az egyik legnépszerűbb adatbázismotor \ref{fig:Adatbázisok}.
 
 \begin{figure}[h]
 \centering
@@ -56,7 +59,8 @@ A PostgreSQL a Kaliforniai egyetem Ingres projektjéből fejlődött ki. Az elte
 
 \Section{Frontend}
 
-A frontend a szoftver megjelenítési rétege. A weboldalnak azon rétege, amit a felhasználó is lát, és interakcióba tud vele lépni. Legfontosabb része a HTML (HyperText Markup Language), ez adja meg a weboldal kinézetének a vázát, és hozzá csatlakozik a CSS (Cascading Style Sheets), ami segítségével egyedi megjelenést biztosíthatunk a weboldalunknak. Több fajta keretrendszer létezik Frontend fejlesztésre, mint például:
+A frontend a szoftver megjelenítési rétege. A weboldalnak azon rétege, amit a felhaszná-
+ló is lát, és interakcióba tud vele lépni. Legfontosabb része a HTML (HyperText Markup Language), ez adja meg a weboldal kinézetének a vázát, és hozzá csatlakozik a CSS (Cascading Style Sheets), ami segítségével egyedi megjelenést biztosíthatunk a weboldalunknak. Több fajta keretrendszer létezik Frontend fejlesztésre, mint például:
 
 \begin{itemize}
 \item React,
@@ -69,15 +73,21 @@ A frontend a szoftver megjelenítési rétege. A weboldalnak azon rétege, amit 
 
 Az Angular \cite{Angular} egy TypeScript-alapú, nyílt forráskódú webalkamazás-keretrendszer. 2016-ban jelent meg az első verzió.
 
-A HTML sablon lehetővé teszi dinamikus értékek beszúrását, mint például szöveges értékek. Az Angular tartalmaz komponenseket, amelyek NgModulokba vannak rendezve. Ezek a komponensek egyben tartalmazzák a TypeScript osztályt HTML-sablont stílusokkal. Minden alkalmazásnak van egy úgynevezett gyökérmodulja, aminek a neve általában az AppModule, amely a bootstrap mechanizmust biztosítja, amely elindítja az alkalmazást. Ngmodulok is importálhatnak más Ngmodulokat, például az útválasztó szolgáltatás használatához a Router NgModul-t.  Minden Angular alkalmazásnak van egy gyökérkomponense, ami összekapcsolja a komponens hierarchiát. Mindegyik komponenshez tartozik egy HTML-sablon, amely segítségével megjeleníthető a tartalom. Tartalmaz egy \textit{services} osztályt is. Ezt akkor használjuk, ha van olyan adat vagy logika, amelyek nem kapcsolódnak, de meg szeretnénk osztani a komponensek között.
+A HTML sablon lehetővé teszi dinamikus értékek beszúrását, mint például szöveges értékek. Az Angular tartalmaz komponenseket, amelyek NgModulokba vannak rendez-
+ve. Ezek a komponensek egyben tartalmazzák a TypeScript osztályt HTML-sablont stílusokkal. Minden alkalmazásnak van egy úgynevezett gyökérmodulja, aminek a neve általában az AppModule, amely a bootstrap mechanizmust biztosítja, amely elindítja az alkalmazást. Ngmodulok is importálhatnak más Ngmodulokat, például az útválasztó szolgáltatás használatához a Router NgModul-t.  Minden Angular alkalmazásnak van egy gyökérkomponense, ami összekapcsolja a komponens hierarchiát. Mindegyik kom-
+ponenshez tartozik egy HTML-sablon, amely segítségével megjeleníthető a tartalom. Tartalmaz egy \textit{services} osztályt is. Ezt akkor használjuk, ha van olyan adat vagy logika, amelyek nem kapcsolódnak, de meg szeretnénk osztani a komponensek között.
 
-\Section{Fejlesztői környezetek és fejlesztéshez használt programok}
+\Section{Fejlesztői környezetek és fejlesztéshez használt p-
+rogramok}
 
-Egy alkalmazás fejlesztését nagyban megkönnyítik a fejlesztői környezetek és a fejlesztéshez használható pro-
-gramok.
+Egy alkalmazás fejlesztését nagyban megkönnyítik a fejlesztői környezetek és a fej-
+lesztéshez használható programok.
 \subsection{Intelij IDEA}
 
-Az InteliJ IDEA \cite{Intelij} egy integrált fejlesztői környezet \cite{Intelij2}, amit a JetBrains fejlesztett ki. Ebben az IDEA-ban Java, Kotlin, Groovy és más JVM alapú nyelveken írt szoftvereket lehet fejleszteni. (Az integrált fejlesztői környezet (IDE)  egy olyan  szoftveralkamazás, amely átfogó lehetőségeket biztosít a számítógép programozóknak a szofverfejlesztéshez .) Az IDE általában legalább egy forráskódszerkesztőből, építési autómatizálási eszközökből, és egy hibakeresőből áll. Egyes IDE-k, például a NetBeans és az Eclipse tartalmazzák a szükséges fordított, értelmezőt vagy mindkettőt; mások, például a SharpDevelop és a Lazuras nem.
+Az InteliJ IDEA \cite{Intelij} egy integrált fejlesztői környezet \cite{Intelij2}, amit a JetBrains fejlesztett ki. Ebben az IDEA-ban Java, Kotlin, Groovy és más JVM alapú nyelveken írt szoftvere-
+ket lehet fejleszteni. (Az integrált fejlesztői környezet (IDE)  egy olyan  szoftveralkama-
+zás, amely átfogó lehetőségeket biztosít a számítógép programozóknak a szofverfejlesz-
+téshez.) Az IDE általában legalább egy forráskódszerkesztőből, építési autómatizálási eszközökből, és egy hibakeresőből áll. Egyes IDE-k, például a NetBeans és az Eclipse tartalmazzák a szükséges fordított, értelmezőt vagy mindkettőt; mások, például a SharpDevelop és a Lazuras nem.
 
 Az InteliJ IDEA látható a \ref{fig:Intelij}. ábrán.
 
@@ -108,7 +118,7 @@ Rengeteg kiegészítővel lehet bővíteni a fejlesztő környezetet, ami könny
 \caption{Visual Studio Code képernyőkép.}
 \label{fig:VSCode}
 \end{figure}
-\newpage
+
 
 \subsection{Postman}
 
@@ -116,11 +126,17 @@ A Postman \cite{Postman} API-k létrehozására és használatára, tesztelésé
 
 \begin{itemize}
 \item API kliens: Lehetővé teszi API-k tesztelését, hibakeresését, és van lehetőség 
-HTTP, REST, SOAP és GraphQL kéréseket is indítani.
-\item API tervezés: OpenAPI, RAML, GraphQL vagy SOAP formátumban tervezhetjük meg az API-kat. A Postman Schema szerkesztője megkönnyíti a különböző méretű fájlokkal való munkát.
-\item API dokumentáció: Postman automatikusan géppel olvasható dokumentációt hoz létre, amit OpenAPI-fájlokon keresztül dokumentál. Tartalmazza a kérések részleteit mintakódokkal.
-\item API tesztelés: Lehetőség van használni funkcionális teszteket, integrációs teszteket, regressziós teszteket. A Postman egy Node.js alapú futtatókörnyezet, ami támogatja gyakori tervezési mintákat és  könyvtárakat, ami segíti a gyors tesztkészítést.
-\item Monitorozás: Naprakészek lehetünk az API állapotával és teljesítményével kapcsolatban. A monitorok a Postman felhőjében vannak tárolva, és ennek köszönhetően gyorsan beállíthatjuk őket.
+HT-
+TP, REST, SOAP és GraphQL kéréseket is indítani.
+\item API tervezés: OpenAPI, RAML, GraphQL vagy SOAP formátumban tervezhet-
+jük meg az API-kat. A Postman Schema szerkesztője megkönnyíti a különböző méretű fájlokkal való munkát.
+\item API dokumentáció: Postman automatikusan géppel olvasható dokumentációt hoz létre, amit OpenAPI-fájlokon keresztül dokumentál. Tartalmazza a kérések részle-
+teit mintakódokkal.
+\item API tesztelés: Lehetőség van használni funkcionális teszteket, integrációs teszte-
+ket, regressziós teszteket. A Postman egy Node.js alapú futtatókörnyezet, ami támogatja gyakori tervezési mintákat és  könyvtárakat, ami segíti a gyors tesztké-
+szítést.
+\item Monitorozás: Naprakészek lehetünk az API állapotával és teljesítményével kap-csolatban. A monitorok a Postman felhőjében vannak tárolva, és ennek köszönhe-
+tően gyorsan beállíthatjuk őket.
 \item Mock szerverek: Más néven „Ál szerverek” aminek segítségével láthatjuk, hogy hogyan fog futni az API-nk mielőtt kihelyeznénk az éles környezetbe. A Postman felhő üzemelteti, és így bárhonnan elérhetőek.
 \end{itemize}
 

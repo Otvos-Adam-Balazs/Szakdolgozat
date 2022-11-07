@@ -4,13 +4,15 @@ Ebben a fejezetben a webalkalmazás kinézetéről és adatmodeljéről lesz sz�
 
 \Section{A feladatom}
 
-A feladatom egy olyan webalkalmazás fejlesztése, amely alkalmas más oldalak autó hirdetéseinek aggregálására és az autók böngészésére. Az alkalmazás funkciói a következős:
+A feladatom egy olyan webalkalmazás fejlesztése, amely alkalmas más oldalak autó hirdetéseinek aggregálására és az autók böngészésére. Az alkalmazás funkciói a követke-
+zők:
 
 \begin{itemize}
 \item Regisztráció: a felhasználó végzi el felhasználónév és jelszó pár megadásával.
 \item Jogosultságok:
 	\begin{itemize}
-	\item Admin: mindenhez hozzáfér, ő frissíti az elérhető autókat, felhasználók jogosultságát változtatja, és törölheti a felhasználót.
+	\item Admin: mindenhez hozzáfér, ő frissíti az elérhető autókat, felhasználók jogo-
+sultságát változtatja, és törölheti a felhasználót.
 	\item User: a hirdetések és a statisztika megtekintésére jogosult.
 	\end{itemize}
 \item Hirdetések megtekintése: Az oldalon megtalálható autókat tudjuk megtekinteni.
@@ -18,7 +20,8 @@ A feladatom egy olyan webalkalmazás fejlesztése, amely alkalmas más oldalak a
 
 \Section{Kinézet és felépítés}
 
-A kinézet minél felhasználóbarátabb lesz, ami azt jelenti, hogy lesz egy grafikus felhasználói felület ami úgy lesz kialakítva, hogy felhasználók minél könnyebben tudják majd használni az alkalmazást, könnyen átlátható legyen számukra.
+A kinézet minél felhasználóbarátabb lesz, ami azt jelenti, hogy lesz egy grafikus felhasz-
+nálói felület ami úgy lesz kialakítva, hogy felhasználók minél könnyebben tudják majd használni az alkalmazást, könnyen átlátható legyen számukra.
 
 A terveséhez az Uizard \cite{uizard} nevű oldalt használtam.
 
@@ -35,7 +38,8 @@ Ha már van fiókunk az oldalhoz, akkor a felhasználónév és a jelszó megad�
 \label{fig:Bejelentkezés}
 \end{figure}
 
-A regisztrációs felületen a felhasználónév és jelszó megadása után be tudunk regisztrálni (\ref{fig:Regisztráció}. ábra), és máris tudjuk használni a weboldalt.
+A regisztrációs felületen a felhasználónév és jelszó megadása után be tudunk regiszt-
+rálni (\ref{fig:Regisztráció}. ábra), és máris tudjuk használni a weboldalt.
 
 Ha nem adunk meg jelszót vagy felhasználó nevet, akkor arról majd értesítést fogunk kapni, ami a következő lesz: "Valamelyik mezőt kitöltetlenül hagyta!".
 
@@ -126,48 +130,52 @@ A programban használt API-ról, a definiált útvonalakról lesz szó ebben a s
 \begin{itemize}
 \item /set
 
-Ez egy \textit{Post} típusú kérés. Ha egy Admin frissíteni szeretné az autók tartalmát ez a végpont akkor fog meghívódni.
+Ez egy \textit{POST} típusú kérés. Ha egy Admin frissíteni szeretné az autók tartalmát ez a végpont akkor fog meghívódni.
 0 értéket fog vissza adni, amint befejezte a frissítést. \textit{String} Típusú.
 \item /get
 
-Ez egy \textit{Get} típusú kérés. Ha egy felhasználó autóra akar keresni, akkor innen fognak lehívódni a megfelelő adatok.
+Ez egy \textit{GET} típusú kérés. Ha egy felhasználó autóra akar keresni, akkor innen fognak lehívódni a megfelelő adatok.
 RequestParam-étereket vár, és az autók listáját fogja vissza adni. Az összes paraméter \textit{String} típusú.
 \item /getMakes
 
-Ez egy \textit{Get} típusú kérés. Ez a végpont akkor fog meghívódni, amikor egy felhasználó márkára akar szűrni, hogy lássa milyen márkájú autók találhatóak a weboldalon.
+Ez egy \textit{GET} típusú kérés. Ez a végpont akkor fog meghívódni, amikor egy felhasználó márkára akar szűrni, hogy lássa milyen márkájú autók találhatóak a weboldalon.
 Nem vár semmilyen értéket. A márkákat fogja vissza adni JSON formátumban.
 \item /getModels
 
-Ez egy \textit{Get} típusú kérés. Márka kiválasztása után automatikusan meghívódik azért, hogy tudjunk márkán belül modellekre is szűrni.
+Ez egy \textit{GET} típusú kérés. Márka kiválasztása után automatikusan meghívódik azért, hogy tudjunk márkán belül modellekre is szűrni.
 Egy márka paramétert vár és a hozzá tartozó modelleket fogja vissza adni JSON  formátumban. A paraméter \textit{String} típusú.
 \item /dataGet
 
-Ez egy \textit{Get} típusú kérés. Ha a felhasználó statisztikát szeretne nézni, akkor ez a végpont hívódik majd meg.
+Ez egy \textit{GET} típusú kérés. Ha a felhasználó statisztikát szeretne nézni, akkor ez a végpont hívódik majd meg.
 Egy kezdő és egy vég dátumot vár. Közötte lévő adatokat fogja vissza adni, JSON formátumban. A paraméterek \textit{String} típusúak.
 \item /dataPost
 
-Ez egy \textit{Post} típusú kérés. Autók lekérdezésének folyamatában fog meghívódni és elmenti azt a márkát az adatbázisba azzal a dátummal amikor szűrtek rá.
+Ez egy \textit{POST} típusú kérés. Autók lekérdezésének folyamatában fog meghívódni és elmenti azt a márkát az adatbázisba azzal a dátummal amikor szűrtek rá.
 Egy RequestBody-t vár ami JSON formátumú és a felhasználónevet és a márkát fogja tartalmazni, \textit{String} típusúak. Üres értéket ad vissza.
 \item /authenticate
 
-Ez egy \textit{Post} típusú kérés. Ezen a végponton tud majd bejelentkezni a felhasználó.
+Ez egy \textit{POST} típusú kérés. Ezen a végponton tud majd bejelentkezni a felhaszná-
+ló.
 Egy Requestbody-t vár ami a felhasználónevet és jelszót tartalmazza, \textit{String} típusúak. Tokent és a felhasználó adatait adja vissza JSON formátumban.
 \item /register
 
-Ez egy \textit{Post} típusú kérés. Regisztráláskor ide küldi majd el a felhasználó adatait a kliens.
+Ez egy \textit{POST} típusú kérés. Regisztráláskor ide küldi majd el a felhasználó adatait a kliens.
 Egy Requestbody-t vár ami a felhasználónevet és jelszót tartalmazza, \textit{String} típusúak. 0, 1, 2-es értékekkel térhet vissza.A visszatérés értéke 0, ha sikeres a regisztráció, 1, ha már létezik az adott nevű felhasználó, és 2, ha valamelyik adat nincs megadva.  
 \item /users
 
-Ez egy \textit{Get} típusú kérés. Itt tudjuk majd lekérdezni az összes felhasználót, a hozzá tartózó neveket és jogosultságokat.
+Ez egy \textit{GET} típusú kérés. Itt tudjuk majd lekérdezni az összes felhasználót, a hozzá tartózó neveket és jogosultságokat.
 A felhasználók listáját adja vissza JSON formátumban. Az adatok \textit{String} típusúak.
 \item /userDelete
 
-Ez egy \textit{Delete} típusú kérés. Ennél a végpontnál tudunk majd felhasználót törölni.
-Egy RequestParam-étert vár ami a törölni kívánt felhasználó nevét tartalmazza, típusa \textit{String}. Üres értéket ad vissza.
+Ez egy \textit{DELETE} típusú kérés. Ennél a végpontnál tudunk majd felhasználót törölni.
+Egy RequestParam-étert vár ami a törölni kívánt felhasználó nevét tartal-
+mazza, típusa \textit{String}. Üres értéket ad vissza.
 \item /userUpdate
 
-Ez egy \textit{Put} típusú kérés. Ennél  a végpontál tudjuk majd változtatni a felhasználó jogosultságát.
-Egy Requestbody-t vár ami a felhasználónevet és az új jogosultságot tartalmazza. JSON formátumban kapja meg az adatokat, amik String típusúak. Üres értéket ad vissza.
+Ez egy \textit{PUT} típusú kérés. Ennél  a végpontál tudjuk majd változtatni a felhasználó jogosultságát.
+Egy Requestbody-t vár ami a felhasználónevet és az új jogosultsá-
+got tartalmazza. JSON formátumban kapja meg az adatokat, amik String típusú-
+ak. Üres értéket ad vissza.
 
 \end{itemize}
 

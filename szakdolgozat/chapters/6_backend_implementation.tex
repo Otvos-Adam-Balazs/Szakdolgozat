@@ -47,7 +47,8 @@ Első lépésben az Adatbázis létrehozásához 2 függőséget kellett haszná
 </dependency>
 \end{java}
 
-Miután a behelyezés megtörtént, az adatbázisunkat hozzá kell kapcsolni a szerverünkhöz, ami az application.properties fájlban történik. Én PostgreSQL-t adatbázist használok az adatok tárolására és a kapcsolat így jön létre a DB és a szerver között:
+Miután a behelyezés megtörtént, az adatbázisunkat hozzá kell kapcsolni a szerve-
+rünkhöz, ami az application.properties fájlban történik. Én PostgreSQL-t adatbázist használok az adatok tárolására és a kapcsolat így jön létre a DB és a szerver között:
 
 \begin{java}
 spring.datasource.url=jdbc:postgresql://localhost:5432/cardb
@@ -61,7 +62,8 @@ spring.jpa.properties.hibernate.format_sql=true
 Az URL az adatbázis szerver és maga az adatbázis eléréséhez szükséges. A szerver a 5432 porton fut és a cardb nevű adatbázisra lesz szükségünk.
 A \textit{username} és \textit{password} ahhoz kell, hogy tudjuk magunkat hitelesíteni.
 
-Következő lépésben létrehoztam a 3 adatbázis táblát (\textit{car}, \textit{search\_data}, \textit{users})amihez létrehoztam mindegyikhez egy \textit{entity}-t és egy \textit{repository}-t.
+Következő lépésben létrehoztam a 3 adatbázis táblát (\textit{car}, \textit{search\_data}, \textit{users})ami-
+hez létrehoztam mindegyikhez egy \textit{entity}-t és egy \textit{repository}-t.
 
 \textit{Entity}-n belül tudjuk megadni, hogy a táblán belül milyen oszlopok legyenek, és hogy mi legyen az elsődleges kulcs.
 
@@ -91,7 +93,9 @@ public class User {
 }
 \end{java}
 
-A \textit{Repository}-ra azért van szükségünk hogy a szerverünk tudjon kommunikálni az adatbázissal, tehát hogy tudjon adatot lekérdezni, felvinni törölni vagy éppen módosítani, és ehhez ki kell terjeszteni a \textit{JpaRepository} osztályt, ami tartalmaz alapvető műveleteket.
+A \textit{Repository}-ra azért van szükségünk hogy a szerverünk tudjon kommunikálni az adatbázissal, tehát hogy tudjon adatot lekérdezni, felvinni törölni vagy éppen módosíta-
+ni, és ehhez ki kell terjeszteni a \textit{JpaRepository} osztályt, ami tartalmaz alapvető művele-
+teket.
 
 Példa egy \textit{Repository} osztályra:
 
@@ -107,9 +111,10 @@ extends JpaRepository<User, Integer> {
 
 \Section{Autók importálása az adatbázisba}
 
-Az adatok megszerzéséhez WebCrawlert \cite{WebCrawler} használok, ami azt jelenti, hogy az adatokat a weboldalak HTML-tartalmából gyűjtöm össze. Ehhez az egész weboldal felépítését át kell hozzá néznem, mivel tag-ek vagy éppen \textit{cssQuery}-vel lehet egyes adatokat kinyerni. 
+Az adatok megszerzéséhez WebCrawlert \cite{WebCrawler} használok, ami azt jelenti, hogy az adato-
+kat a weboldalak HTML-tartalmából gyűjtöm össze. Ehhez az egész weboldal felépítését át kell hozzá néznem, mivel tag-ek vagy éppen \textit{cssQuery}-vel lehet egyes adatokat kinyerni. 
 
-Esetemben ez azért volt elég nehezen megoldható, mert arra is figyelni kellett, hogy vannak olyan autók a honlapon, amik nem rendelkeznek az összes adattal, ezért ki kellett szűrni az úgymond hibásan feltöltötteket. 
+Esetemben ez azért volt elég nehezen megoldható, mert arra is figyelni kellett, hogy vannak olyan autók a honlapon, amik nem rendelkeznek az összes adattal, ezért ki kellett szűrni az úgymond hibásan feltöltötteket. Olyan adatok hiányoztak sokszor, mint például: lóerő, hengerűrtartalom vagy éppen a futott kilométer nem volt megadva. Nagyjából az autóknak az 5\%-a volt hibás.
 
 A lekérdezett adatok mennyisége attól függ, hogy hány oldalt fésülök át a Crawler segítségével, és hogy mennyi olyan autó áll ezeken az oldalakon rendelkezésre, ami az összes adattal rendelkezik. 
 
@@ -172,7 +177,8 @@ public void saveJoAutok(String joAutok)
 
 \Section{Autók lekérdezése az adatbázisból}
 
-Ha valaki autókra szeretne keresni akkor a \textit{/get} végpont hívódik, meg ami Requestparamétereket vár. Rengeteg paraméter kell egy ilyen lekérdezéshez, amit opcionálisan ki is lehet hagyni, így arra volt szükségem hogy dinamikus lekérdezést tudjak létrehozni, amihez a Criteria API-t használom.
+Ha valaki autókra szeretne keresni akkor a \textit{/get} végpont hívódik, meg ami Requestpara-
+métereket vár. Rengeteg paraméter kell egy ilyen lekérdezéshez, amit opcionálisan ki is lehet hagyni, így arra volt szükségem hogy dinamikus lekérdezést tudjak létrehozni, amihez a Criteria API-t használom.
 
 JPA Specification teszi azt lehetővé, hogy dinamikus legyen a lekérdezés ami a Criteria API-ra épül, tehát nem kell minden adatnak szerepelnie benne, vagy éppen úgy is működik, ha nincsen benne szereplő kritérium, hogy mi alapján kérdezze le az adatokat. (Akkor az összeset lekérdezi az adatbázisból.) A Predicate interfészével tudjuk összekötni a Query-nket a vizsgálat után.
 
@@ -198,7 +204,8 @@ public List<Car> getCars(String makes, String model,
         }
         if (!StringUtils.isEmpty(minAge) && 
             !StringUtils.isEmpty(maxAge) &&
-            Integer.parseInt(minAge)<Integer.parseInt(maxAge)) {
+            Integer
+            .parseInt(minAge)<Integer.parseInt(maxAge)) {
             p = cb.and(p, cb.between(root.get("age"),
             Integer.parseInt(minAge),Integer
                                     .parseInt(maxAge)));
@@ -225,10 +232,13 @@ public List<Car> getCars(String makes, String model,
 }
 \end{java}
 
-Ahogy a kódban is látható, úgy oldottam meg azoknak a paramétereknek a vizsgálatát, ott ahol -tól -ig értékek vannak, hogy amikor a minimum érték nagyobb mint az maximum, akkor nem kerül bele a lekérdezésbe, és így nem fogunk hibát kapni sosem a keresésnél.
+Ahogy a kódban is látható, úgy oldottam meg azoknak a paramétereknek a vizsgála-
+tát, ott ahol -tól -ig értékek vannak, hogy amikor a minimum érték nagyobb mint az maximum, akkor nem kerül bele a lekérdezésbe, és így nem fogunk hibát kapni sosem a keresésnél.
 
 \Section{Bejelentkezés és Regisztrációs}
-A regisztráció és bejelentkezés elkészítéséhez a Spring Security keretrendszert \cite{SpringSecurity} használtam, mert nagyban megkönnyíti a fejlesztési folyamatot, mivel biztosít előre elkészített modulokat.
+A regisztráció és bejelentkezés elkészítéséhez a Spring Security keretrendszert \cite{SpringSecurity} hasz-
+náltam, mert nagyban megkönnyíti a fejlesztési folyamatot, mivel biztosít előre elkészí-
+tett modulokat.
 
 \subsection{Regisztráció}
 Ahhoz, hogy az oldalt használni lehessen  a regisztráció az egyik legfontosabb lépés. Ez felhasználónév és  jelszó megadásával lehetséges. 
@@ -312,7 +322,8 @@ Bejelentkezés után érhetjük el azokat a végpontokat, de csak azokat, amihez
 \item autók lekérdezése a többi oldalról.
 \end{itemize}
 
-Ehhez nagyon fontos a jogosultság vizsgálata, amit a @PreAuthorize annotációval valósítok meg amely SpEL (Spring Expression Language) használatával írhatók. Ellenőrzi a jogosultságot mielőtt be lépne a metódusba \cite{SpringSecurity}.
+Ehhez nagyon fontos a jogosultság vizsgálata, amit a @PreAuthorize annotációval valósítok meg amely SpEL (Spring Expression Language) használatával írhatók. Elle-
+nőrzi a jogosultságot mielőtt be lépne a metódusba \cite{SpringSecurity}.
 
 Az alábbi kódrész egy példa arra, hogy hogyan is használható az annotáció. Ennél a példánál a \textit{/set} végpontot csak az ADMIN jogú felhasználó érheti el.
 
@@ -327,7 +338,8 @@ IOException {
 \newpage
 
 \subsection{JSON Web Token}
-Mikor bejelentkezünk akkor a szerver generál egy JWT (JSON Web Token)\cite{JWTexample} tokent. Ez egy javasolt internetes szabvány az opcionálisan aláírt és/vagy opcionálisan titkosított adatok létrehozására, amelyek hasznos adattartalma bizonyos számú követelést deklaráló JSON-t tartalmaz. A tokeneket titkos kulccsal vagy nyilvános/titkos kulccsal írják alá.
+Mikor bejelentkezünk akkor a szerver generál egy JWT (JSON Web Token)\cite{JWTexample} tokent. Ez egy javasolt internetes szabvány az opcionálisan aláírt és/vagy opcionálisan titkosí-
+tott adatok létrehozására, amelyek hasznos adattartalma bizonyos számú követelést deklaráló JSON-t tartalmaz. A tokeneket titkos kulccsal vagy nyilvános/titkos kulccsal írják alá.
 
 A token tartalmazni fogja a felhasználó nevét. A token minden ki-és bejelentkezés során újragenerálódik. 
 Az \ref{fig:JWT}. ábrán egy példa látható egy kódolt és dekódolt JWT-re.
