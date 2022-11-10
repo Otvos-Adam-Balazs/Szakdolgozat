@@ -13,20 +13,21 @@ A Java \cite{Java} egy objektum orientált programozási nyelv, amit James Gosli
 A Java célja a hordozhatóság, ami azt jelenti, hogy a Java-ban írt programoknak hasonlóan kell futnia bármely JRE-vel rendelkező operációs rendszeren. Java nyelvi kódot először bájtkódra fordítják, ami hasonló a gépi kódhoz, de virtuális gép általi végrehajtásra készülnek. Vannak mikro vezérlők amik képesek a Java bájtkódját közvet-
 lenül hardveren futtatni.
 
-A Java a szintaxisát a C és C++ nyelvből örökölte.A Java nem támogatja az operátok túlterhelést vagy a többszörös öröklődést (interfészek esetében lehetséges).
+A Java a szintaxisát a C és C++ nyelvből örökölte. A Java nem támogatja az operátor túlterhelést vagy a többszörös öröklődést (interfészek esetében lehetséges).
 
 A Java jelenlegi tulajdonosa az Oracle Corporation 2010-óta, miután felvásárolta a Sun Microsystems-t.
 
-A Java az egyik legelterjedtebb programozási nyelv, mivel az elterjedt operációs rendszerekre tudunk vele alkalmazást fejleszteni, és a tervezésnél az volt a cél, hogy könnyen tanulható legyen .
+A Java az egyik legelterjedtebb programozási nyelv, mivel az elterjedt operációs rendszerekre tudunk vele alkalmazást fejleszteni, és a tervezésnél az volt a cél, hogy könnyen tanulható legyen.
 
 \subsection{Spring Boot}
 
-A Spring egy Java alapú webalkalmazás-keretrendszer, ami nyílt forráskódú, és a Spring Boot Spring-keretrendszerre épülő bővítmény. A Spring testreszabott webalkalmazások létrehozásához tökéletes, ami teljesen konfigurálható az előre elkészített fügvénykönyv-
-tárakkal. Spring Boottal különálló Spring alkalmazásokat hozhatunk létre, amit azonnal futtathatunk.
+A Spring egy Java alapú webalkalmazás-keretrendszer, ami nyílt forráskódú, és a Spring Boot egy Spring-keretrendszerre épülő bővítmény. A Spring testreszabott webalkalma-
+zások létrehozásához tökéletes, ami teljesen konfigurálható az előre elkészített fügvény-
+könyvtárakkal. Spring Boot-tal különálló Spring alkalmazásokat hozhatunk létre, amit azonnal futtathatunk.
 
 A Spring Boot használata nagyon egyszerű, jó minőségű alkalmazásokat lehet benne fejleszteni kevesebb fejlesztési idő alatt. Beépített HTTP-kiszolgálókat tartalmaz, mint a Tomcat és a Jerry.
 
-A spring Boot tartalmaz egy Maven-hez tartozó \textit{(pom.xml)} fájlt, amiben \textit{spring-boot-dependency}-ket tudunk megadni, mint például:
+A Spring Boot tartalmaz egy Maven-hez tartozó \textit{(pom.xml)} fájlt, amiben \textit{spring-boot-dependency}-ket tudunk megadni, mint például:
 
 \begin{itemize}
 \item \textit{spring-boot-starter-web},
@@ -47,12 +48,12 @@ Az adatbázis nem más, mint elektronikusan tárolt adatok, amik rendszerezve va
 A PostgreSQL \cite{PostgreSQL} egy nyílt forráskódú relációs adatbáziskezelő rendszer, ami az egyik legrégebbi relációs adatbázis, nem mellesleg ingyenes. A relációs adatbázisok relációs modellen alapulnak. A relációs modell az adatokat egy vagy több sorból és oszlopból álló táblázatba (relációba) rendezi, és minden sorhoz rendel egy egyedi kulcsot.
 
 A PostgreSQL a Kaliforniai egyetem Ingres projektjéből fejlődött ki. Az elterjedtebb operációs rendszerekkel kompatibilis. Támogatja a relációs és a nem relációs lekérdezé-
-seket is, így JSON vagy SQL alapú útvonal-kifejezésekkel is elérhetőek az adatok.  Mind ezek miatt az egyik legnépszerűbb adatbázismotor \ref{fig:Adatbázisok}.
+seket is, így JSON vagy SQL alapú útvonal-kifejezésekkel is elérhetőek az adatok.  Mind ezek miatt az egyik legnépszerűbb adatbázismotor (\ref{fig:Adatbázisok}. ábra).
 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{images/top14_database.png}
-\caption{A 14 legnépszerűbb adatbázis az Appinventiv kimutatása alapján \cite{databases}}.
+\caption{A 14 legnépszerűbb adatbázis az Appinventiv kimutatása alapján \cite{databases}}
 \label{fig:Adatbázisok}
 \end{figure}
 \newpage
@@ -100,7 +101,7 @@ Az InteliJ IDEA látható a \ref{fig:Intelij}. ábrán.
 
 \subsection{Visual Studio Code}
 
-VS Code (\ref{fig:VSCode}. ábra) egy forráskód szerkesztő, amit a Microsoft fejlesztett ki 2015-ben \cite{VSCode}. Windows, Linux és MacOS operációs rendszereken érhető el. Nagyon sok programozási nyelvel lehet használni, mint például:
+VS Code (\ref{fig:VSCode}. ábra) egy forráskód szerkesztő, amit a Microsoft fejlesztett ki 2015-ben \cite{VSCode}. Windows, Linux és MacOS operációs rendszereken érhető el. Nagyon sok programozási nyelvvel lehet használni, mint például:
 
 \begin{itemize}
 \item JavaScipt,
@@ -137,10 +138,10 @@ ket, regressziós teszteket. A Postman egy Node.js alapú futtatókörnyezet, am
 szítést.
 \item Monitorozás: Naprakészek lehetünk az API állapotával és teljesítményével kap-csolatban. A monitorok a Postman felhőjében vannak tárolva, és ennek köszönhe-
 tően gyorsan beállíthatjuk őket.
-\item Mock szerverek: Más néven „Ál szerverek” aminek segítségével láthatjuk, hogy hogyan fog futni az API-nk mielőtt kihelyeznénk az éles környezetbe. A Postman felhő üzemelteti, és így bárhonnan elérhetőek.
+\item Mock szerverek: Más néven „Ál szerverek”, aminek segítségével láthatjuk, hogy hogyan fog futni az API-nk mielőtt kihelyeznénk az éles környezetbe. A Postman felhő üzemelteti, és így bárhonnan elérhetőek.
 \end{itemize}
 
-A \ref{fig:Postman}. ábrán látható a postman-ről egy képernyőkép.
+A \ref{fig:Postman}. ábrán látható a Postman-ről egy képernyőkép.
 
 \begin{figure}[h]
 \centering

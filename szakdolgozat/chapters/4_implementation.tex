@@ -1,5 +1,5 @@
 \Chapter{Tervezés}
-Ebben a fejezetben a webalkalmazás kinézetéről és adatmodeljéről lesz szó.
+Ebben a fejezetben a webalkalmazás kinézetéről és adatmodelléről lesz szó.
 
 
 \Section{A feladatom}
@@ -55,7 +55,7 @@ Ha nem adunk meg jelszót vagy felhasználó nevet, akkor arról majd értesít�
 
 A főoldalon látunk egy szűrő felületet, ahol ki lehet választani, hogy milyen márkájú és modellű autót milyen üzemanyag használattal, milyen évjárat és hengerűrtartalom között szeretnénk keresni. Van lehetőség az ár sáv megadására is (\ref{fig:Fooldal}. ábra).
 
-Látunk, egy diagramot ahol statisztikát tudunk megtekinteni az autókra keresések számáról egy adott időintervallumon belül. A vízszintes tengelyen az autómárkák neve lesz, a függőlegesen pedig a keresések száma.
+Látunk, egy diagramot, ahol statisztikát tudunk megtekinteni az autókra keresések számáról egy adott időintervallumon belül. A vízszintes tengelyen az autómárkák neve lesz, a függőlegesen pedig a keresések száma.
 
 \begin{figure}[h]
 \centering
@@ -64,13 +64,13 @@ Látunk, egy diagramot ahol statisztikát tudunk megtekinteni az autókra keres�
 \label{fig:Fooldal}
 \end{figure}
 
-Van egy csavarkulcs ikon is, amit csak ADMIN felhasználó lát. Ez a gomb az adminisztrátori felületre visz át.
+Van egy csavarkulcs ikon is, amit csak az \textit{admin} felhasználó lát. Ez a gomb az adminisztrátori felületre visz át.
 
 \subsection{Találatok megtekintése}
 
-A találati oldalon láthatjuk az autókat, egy képet az autóról, az alap információkat, mint évjárat, lóerő, vagy a köbcenti.
+A találati oldalon láthatjuk az autókat: egy képet az autóról, az alap információkat, mint évjárat, lóerő, vagy a köbcenti.
 
-Ha megtaláljuk a megfelelő autót, akkor a "MEGNÉZEM", gombra kattintva meg is tudjuk tekinteni az autót (\ref{fig:Talalatok}. ábra).
+Ha megtaláljuk a megfelelő autót, akkor a "MEGNÉZEM" gombra kattintva meg is tudjuk tekinteni az autót (\ref{fig:Talalatok}. ábra).
 \newpage
 
 \begin{figure}[h]
@@ -94,18 +94,18 @@ Az Adminisztátori oldalon találunk egy táblázatot a felhasználókról, ami 
 
 \Section{Adat táblák}
 
-Az alkalmazás elkészítéséhez 3 darab táblára lesz szükség: egy
-felhasználók (\textit{users}), autók (\textit{cars}) és a keresési adatok (\textit{search\_data}) táblára (\ref{fig:DataTable}. ábra).
+Az alkalmazás elkészítéséhez 3 darab táblára lesz szükség: a
+felhasználók (\textit{users}), az autók (\textit{cars}) és a keresési adatok (\textit{search\_data}) táblára (\ref{fig:DataTable}. ábra).
 
 \medskip
 \textit{users} tábla:
 \begin{itemize}
-\item Itt lesznek eltárolva a felhasználó adatai a regisztráció után. Ilyen a jelszó, a felhasználónév és jogosultsága, hogy admin vagy user-e. A jogosultságot az Admin rangú felhasználó tudja változtatni.
+\item Itt lesznek eltárolva a felhasználó adatai a regisztráció után. Ilyen a jelszó, a felhasználónév és jogosultsága, hogy \textit{admin} vagy \textit{user}-e. A jogosultságot az \textit{admin} rangú felhasználó tudja változtatni.
 \end{itemize}
 
 \textit{cars} tábla:
 \begin{itemize}
-\item Az autók lekérdezése után itt tárolódnak az autók,  a hozzájuk tartozó adatok és a link ami az autó hirdetésére vezet át
+\item Az autók lekérdezése után itt tárolódnak az autók,  a hozzájuk tartozó adatok és a link, ami az autó hirdetésére vezet át
 \end{itemize}
 
 \textit{search\_data} tábla:
@@ -120,9 +120,9 @@ felhasználók (\textit{users}), autók (\textit{cars}) és a keresési adatok (
 \label{fig:DataTable}
 \end{figure}
 
-A \textit{users} és \textit{search\_data} tábla között egy-több kapcsolat, lesz mivel egy \textit{user}-hez több keresési előzmény is tartozhat, de egy kereséshez csak egy felhasználó.
+A \textit{users} és \textit{search\_data} tábla között egy-több kapcsolat lesz, mivel egy \textit{user}-hez több keresési előzmény is tartozhat, de egy kereséshez csak egy felhasználó.
 
-A \textit{cars} tábla független lesz a többitől, mivel ide az adatok más oldalról lesznek letöltve, és így nem tartozik a \textit{user} táblához.
+A \textit{cars} tábla független lesz a többitől, mivel ide az adatok más oldalról lesznek letöltve, és így nem tartozik a \textit{users} táblához.
 
  
 \Section{API-k megtervezése}
@@ -131,7 +131,7 @@ A programban használt API-ról, a definiált útvonalakról lesz szó ebben a s
 \item /set
 
 Ez egy \textit{POST} típusú kérés. Ha egy Admin frissíteni szeretné az autók tartalmát ez a végpont akkor fog meghívódni.
-0 értéket fog vissza adni, amint befejezte a frissítést. \textit{String} Típusú.
+0 értéket fog vissza adni, amint befejezte a frissítést. A vissza adott érték \textit{String} típusú.
 \item /get
 
 Ez egy \textit{GET} típusú kérés. Ha egy felhasználó autóra akar keresni, akkor innen fognak lehívódni a megfelelő adatok.
@@ -150,17 +150,17 @@ Ez egy \textit{GET} típusú kérés. Ha a felhasználó statisztikát szeretne 
 Egy kezdő és egy vég dátumot vár. Közötte lévő adatokat fogja vissza adni, JSON formátumban. A paraméterek \textit{String} típusúak.
 \item /dataPost
 
-Ez egy \textit{POST} típusú kérés. Autók lekérdezésének folyamatában fog meghívódni és elmenti azt a márkát az adatbázisba azzal a dátummal amikor szűrtek rá.
+Ez egy \textit{POST} típusú kérés. Autók lekérdezésének folyamatában fog meghívódni, és elmenti azt a márkát az adatbázisba azzal a dátummal, amikor szűrtek rá.
 Egy RequestBody-t vár ami JSON formátumú és a felhasználónevet és a márkát fogja tartalmazni, \textit{String} típusúak. Üres értéket ad vissza.
 \item /authenticate
 
 Ez egy \textit{POST} típusú kérés. Ezen a végponton tud majd bejelentkezni a felhaszná-
 ló.
-Egy Requestbody-t vár ami a felhasználónevet és jelszót tartalmazza, \textit{String} típusúak. Tokent és a felhasználó adatait adja vissza JSON formátumban.
+Egy RequestBody-t vár ami a felhasználónevet és jelszót tartalmazza, \textit{String} típusúak. A tokent és a felhasználó adatait adja vissza JSON formátumban.
 \item /register
 
 Ez egy \textit{POST} típusú kérés. Regisztráláskor ide küldi majd el a felhasználó adatait a kliens.
-Egy Requestbody-t vár ami a felhasználónevet és jelszót tartalmazza, \textit{String} típusúak. 0, 1, 2-es értékekkel térhet vissza.A visszatérés értéke 0, ha sikeres a regisztráció, 1, ha már létezik az adott nevű felhasználó, és 2, ha valamelyik adat nincs megadva.  
+Egy RequestBody-t vár ami a felhasználónevet és jelszót tartalmazza, \textit{String} típusúak. 0, 1, 2-es értékekkel térhet vissza. A visszatérés értéke 0, ha sikeres a regisztráció, 1, ha már létezik az adott nevű felhasználó, és 2, ha valamelyik adat nincs megadva.  
 \item /users
 
 Ez egy \textit{GET} típusú kérés. Itt tudjuk majd lekérdezni az összes felhasználót, a hozzá tartózó neveket és jogosultságokat.
@@ -173,8 +173,8 @@ mazza, típusa \textit{String}. Üres értéket ad vissza.
 \item /userUpdate
 
 Ez egy \textit{PUT} típusú kérés. Ennél  a végpontál tudjuk majd változtatni a felhasználó jogosultságát.
-Egy Requestbody-t vár ami a felhasználónevet és az új jogosultsá-
-got tartalmazza. JSON formátumban kapja meg az adatokat, amik String típusú-
+Egy RequestBody-t vár ami a felhasználónevet és az új jogosultsá-
+got tartalmazza. JSON formátumban kapja meg az adatokat, amik \textit{String} típusú-
 ak. Üres értéket ad vissza.
 
 \end{itemize}

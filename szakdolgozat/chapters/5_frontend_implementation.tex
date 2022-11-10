@@ -55,7 +55,7 @@ Ha nem rendelkezünk fiókkal, a "Regisztráció" gombra kattintva át is jutunk
 
 Bejelentkezésnél is JSON formátumban lesznek elküldve az adatok.
 
-Ha sikeresen bejelentkeztünk, akkor kliens kap egy tokent, és egy jogosultságot is amit a Local Storage-ban fog eltárolni addig, ameddig ki nem jelentkezünk az oldalról.
+Ha sikeresen bejelentkeztünk, akkor a kliens kap egy tokent, és egy jogosultságot is, amit a Local Storage-ban fog eltárolni addig, ameddig ki nem jelentkezünk az oldalról.
 
 Az alábbi programrész bemutatja, hogyan menthető el a Local Storage-ban az adat.
 
@@ -94,7 +94,7 @@ ban melyik márkára kerestek rá a legtöbben (\ref{fig:Találatok}. ábra).
 A maximális dátum amit ki lehet választani, az mindig automatikusan változik annak függvényében, hogy éppen hanyadika van.
 A kezdő dátum sosem lehet nagyobb a végső dátumnál, és a végső dátum sem lehet kisebb a kezdő dátumnál, ezt a rendszer automatikusan nem engedi.
 
-A diagramot a Chart.js \cite{Chartjs} segítségével készítettem el. 
+A diagramot a Chart.js \cite{Chartjs} segítségével készítettem el. Az
 \begin{java}
 npm i chart.js@2.9.4
 \end{java}
@@ -112,29 +112,29 @@ A Chart.js \cite{Chartjs2} egy diagram rajzoló, ingyenes JavaScript-könyvtár 
 A következő kódrész bemutat egy példát oszlopdiagram létrehozására.
 \begin{java}
 new Chart(this.ctx, {
-      type: "bar",
-      data: {
-         datasets: [{
-           label: "Keresesi statisztika",
-           data:this.
-           dataSearch,
-           backgroundColor: "rgb(115 185 243 / 65%)",
-           borderColor: "#007ee7",
-           fill: true,      
-          },
-         ],
-         labels: this.data
-       },
-       options: {
-         events: ['none'],
-         scales: {
-            yAxes: [{
-             ticks: {
-              beginAtZero: true
-          }
+   type: "bar",
+   data: {
+     datasets: [{
+       label: "Keresesi statisztika",
+       data:this.
+       dataSearch,
+       backgroundColor: "rgb(115 185 243 / 65%)",
+       borderColor: "#007ee7",
+       fill: true,      
+      },
+     ],
+     labels: this.data
+   },
+   options: {
+     events: ['none'],
+     scales: {
+       yAxes: [{
+         ticks: {
+           beginAtZero: true
+         }
        }]
      }
-   }
+   } 
 }); 
 \end{java}
 
@@ -145,7 +145,7 @@ használó látja, és így csakis ő tudja használni. Amikor rá kattint átke
 
 Ha nem vagyunk Admin felhasználók, akkor ha megadjuk az elérési útvonalát akkor automatikusan a bejelentkező felületre kerülünk, hogy tudjuk magunkat igazolni.
 
-Az Angular AuthGuard \cite{Authguard} bővítményével valósítottam meg az útvonal védelmet, amit a parancssorban a 
+Az Angular AuthGuard \cite{Authguard} bővítményével valósítottam meg az útvonal védelmet, amit a parancssorban az 
 \begin{java}
 ng g guard auth
 \end{java}
