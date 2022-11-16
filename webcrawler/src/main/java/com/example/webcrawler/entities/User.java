@@ -29,8 +29,4 @@ public class User {
 
     @Column(name = "authority")
     private String authority;
-
-    @OneToMany(mappedBy = "user")
-    @JsonIgnore
-    private Set<Data> datas;
 }

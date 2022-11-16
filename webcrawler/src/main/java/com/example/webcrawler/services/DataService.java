@@ -33,7 +33,6 @@ public class DataService  {
             Data data = new Data();
             data.setMakes(makes);
             data.setDate(Date.valueOf(LocalDate.now()));
-            data.setUser(user);
             dataRepository.save(data);
         }else{
         }
